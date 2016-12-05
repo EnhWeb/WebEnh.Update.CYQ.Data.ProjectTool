@@ -179,7 +179,7 @@
                     strDisplayName = strDisplayName == "" ? pair.Key : strDisplayName;
 
                     builder.AppendFormat("        /// <summary>\r\n");
-                    builder.AppendFormat("        /// 字段名：{0}\r\n", strDisplayName);
+                    builder.AppendFormat("        /// enum表名：{0}\r\n", strDisplayName);
                     builder.AppendFormat("        /// </summary>\r\n");
                     builder.AppendFormat("        [System.ComponentModel.DataAnnotations.Display(Name = \"{0}\")]\r\n", strDisplayName);
                     builder.AppendFormat("        {0} ,\r\n\r\n", FormatKey(pair.Key));//表名
