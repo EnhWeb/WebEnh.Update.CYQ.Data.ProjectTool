@@ -381,11 +381,11 @@
 
                         builder.AppendFormat("        {0} ,\r\n", str, strDisplayName);
                     }
-                    builder.Append(" }\r\n");
+                    builder.Append("    }\r\n");
                 }
                 else
                 {
-                    builder.Append("}\r\n");
+                    builder.Append("    }\r\n");
                 }
             }
             catch (Exception exception)
