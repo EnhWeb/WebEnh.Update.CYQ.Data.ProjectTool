@@ -6,7 +6,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}</ProjectGuid>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <AssemblyName>CYQ.Data.ProjectTool</AssemblyName>
+    <AssemblyName>WebEnh.Update.CYQ.Data.ProjectTool</AssemblyName>
     <OutputType>WinExe</OutputType>
     <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
   </PropertyGroup>
