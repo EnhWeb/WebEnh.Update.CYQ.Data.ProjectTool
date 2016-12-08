@@ -38,20 +38,22 @@
             {
                 StringBuilder sb = new StringBuilder(50000);
                 string str2 = string.Format(config.NameSpace, dbName).TrimEnd(new char[] { '.' });
-                AppendText(sb, "using System;\r\n", new string[0]);
+                AppendText(sb, "using System;", new string[0]);
+                AppendText(sb, "using System.ComponentModel.DataAnnotations;\r\n", new string[0]);
                 AppendText(sb, "namespace {0}", new string[] { str2 });
                 AppendText(sb, "{", new string[0]);
+
                 if (!string.IsNullOrEmpty(description))
                 {
                     description = description.Replace("\r\n","    ").Replace("\r","  ").Replace("\n","  ");
                     AppendText(sb, "    /// <summary>", new string[0]);
                     AppendText(sb, "    /// {0}", new string[] { description });
                     AppendText(sb, "    /// </summary>", new string[0]);
-                    AppendText(sb, "    [Display(Name=\"{0}\")]", new string[] { description });
+                    AppendText(sb, "    [System.ComponentModel.DisplayName(\"{0}\")]", new string[] { description });//实体表名的指定方法不是这样操作的，需更新，有空再更新
                 }
                 AppendText(sb, "    public class {0} {1}", new string[] { str + config.EntitySuffix, flag ? "" : ": CYQ.Data.Orm.OrmBase" });
                 AppendText(sb, "    {", new string[0]);
-                if (!flag)
+                if (!flag)//如果是ORM，则进行下面的生成
                 {
                     AppendText(sb, "        public {0}()", new string[] { str + config.EntitySuffix });
                     AppendText(sb, "        {", new string[0]);
@@ -73,6 +75,14 @@
                                 name = FixName(name);
                             }
                             type = DataType.GetType(struct2.SqlType);
+
+                            AppendText(sb, "\r\n", new string[0]);//添加换行
+                            if (!string.IsNullOrEmpty(struct2.Description))
+                            {
+                                AppendText(sb, "        /// <summary>", new string[0]);
+                                AppendText(sb, "        /// 私有变量：{0}", new string[] { struct2.Description });
+                                AppendText(sb, "        /// </summary>", new string[0]);
+                            }
                             AppendText(sb, "        private {0} _{1};", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
                             if (!string.IsNullOrEmpty(struct2.Description))
                             {
@@ -80,7 +90,7 @@
                                 AppendText(sb, "        /// <summary>", new string[0]);
                                 AppendText(sb, "        /// {0}", new string[] { struct2.Description });
                                 AppendText(sb, "        /// </summary>", new string[0]);
-                                AppendText(sb, "        [Display(Name=\"{0}\")]", new string[] { struct2.Description });
+                                AppendText(sb, "        [Display(Name = \"{0}\")]", new string[] { struct2.Description });
                             }
                             AppendText(sb, "        public {0} {1}", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
                             AppendText(sb, "        {", new string[0]);
@@ -139,22 +149,63 @@
             try
             {
                 StringBuilder builder = new StringBuilder(50000);
-                string str = string.Format(config.NameSpace, dbName).TrimEnd(new char[] { '.' });
-                builder.AppendFormat("using System;\r\n\r\nnamespace {0}\r\n{{\r\n", str);
-                builder.Append(config.MutilDatabase ? string.Format("    public enum {0}Enum {{", dbName) : "    public enum TableNames {");
-                foreach (KeyValuePair<string, string> pair in tables)
+
+                string str = string.Format(config.NameSpace, dbName).TrimEnd(new char[] { '.' });//得到命名空间名称
+
+
+
+
+
+
+
+                builder.AppendFormat("using System;\r\n\r\nnamespace {0}\r\n{{\r\n", str);//开始
+
+
+                builder.Append("\r\n\r\n    #region //    数据库中表名枚举 \r\n");
+                builder.AppendFormat("    /// <summary>\r\n");
+                builder.AppendFormat("    /// {0} 数据库中表集合枚举\r\n", dbName);
+                builder.AppendFormat("    /// </summary>\r\n");
+                //builder.AppendFormat("    [System.ComponentModel.DisplayName(\"{0}\")]",string.Empty);  //需自定义显示值的属性，暂未实现
+                builder.Append(
+                                config.MutilDatabase    //如果是选择了多数据库
+                                ? string.Format("    public enum {0}Enum\r\n    {{\r\n", dbName)          //如果是选择的多个数据库则返回这行
+                                : string.Format("    public enum TableNames\r\n    {{\r\n", string.Empty)  //如果选择的不是多个数据库则返回这行
+                                );
+
+                foreach (KeyValuePair<string, string> pair in tables)//添加表名enum
                 {
-                    builder.Append(" " + FormatKey(pair.Key) + " ,");
+                    // 处理回车或换行
+                    string strDisplayName = pair.Value.Replace("\r\n", "").Replace("\r","").Replace("\n","");//移除回车等换行字符串
+                    strDisplayName = strDisplayName == "" ? pair.Key : strDisplayName;
+
+                    builder.AppendFormat("        /// <summary>\r\n");
+                    builder.AppendFormat("        /// enum表名：{0}\r\n", strDisplayName);
+                    builder.AppendFormat("        /// </summary>\r\n");
+                    builder.AppendFormat("        [System.ComponentModel.DataAnnotations.Display(Name = \"{0}\")]\r\n", strDisplayName);
+                    builder.AppendFormat("        {0} ,\r\n\r\n", FormatKey(pair.Key));//表名
                 }
-                builder[builder.Length - 1] = '}';
-                builder.Append("\r\n\r\n    #region 枚举 \r\n");
+                //builder[builder.Length - 1] = ' ';
+                builder.Remove(builder.Length - 4, 4);
+                builder.Append("\r\n    }");//结束表名的enum
+                builder.Append("\r\n    #endregion\r\n");//结束
+
+
+
+
+
+
+
+                builder.Append("\r\n\r\n    #region //    单个表枚举（带字段名和属性显示值）\r\n");
                 foreach (KeyValuePair<string, string> pair2 in tables)
                 {
-                    builder.Append(GetFiledEnum(pair2.Key, config));
+                    builder.Append(GetFiledEnum(pair2.Key, pair2.Value, config));
                 }
-                builder.Append("    #endregion\r\n}");
+
+                builder.Append("    #endregion\r\n}");//结束
+
+
                 string str2 = "TableNames.cs";
-                if (config.MutilDatabase)
+                if (config.MutilDatabase)//如果是选择的多个数据库则保存为单独文件
                 {
                     str2 = dbName + "Enum.cs";
                 }
@@ -288,38 +339,62 @@
             return tName;
         }
 
-        private static string GetFiledEnum(string tableName, ProjectConfig config)
+        /// <summary>
+        /// 得到enum
+        /// </summary>
+        /// <param name="tableName">表名</param>
+        /// <param name="tableName_displayName">表名（显示名[数据库中备注的名称]）</param>
+        /// <param name="config"></param>
+        /// <returns></returns>
+        private static string GetFiledEnum(string tableName,string tableName_displayName, ProjectConfig config)
         {
             StringBuilder builder = new StringBuilder();
-            builder.Append("    public enum " + FormatKey(tableName) + " {");
+
+            // 处理回车或换行
+            tableName_displayName = tableName_displayName.Replace("\r\n", "").Replace("\r", "").Replace("\n", ""); ;
+            tableName_displayName = tableName_displayName == "" ? tableName : tableName_displayName;
+
+
+            builder.AppendFormat("    #region //    表名：{0}    \t\t备注名：{1}\r\n", tableName, tableName_displayName);
+            builder.AppendFormat("    /// <summary>\r\n", string.Empty);
+            builder.AppendFormat("    /// enum表名：{0}\r\n", tableName_displayName);
+            builder.AppendFormat("    /// </summary>\r\n", string.Empty);
+            builder.AppendFormat("    public enum {0}\r\n", FormatKey(tableName));
+            builder.AppendFormat("    {{\r\n");
             try
             {
                 MDataColumn columns = DBTool.GetColumns(tableName, config.Conn);
                 if (columns.Count > 0)
                 {
-                    for (int i = 0; i < columns.Count; i++)
+                    for (int i = 0; i < columns.Count; i++)//进行列的输出
                     {
                         string str = FormatKey(columns[i].ColumnName);
-                        if (i == 0)
-                        {
-                            builder.Append(" " + str);
-                        }
-                        else
-                        {
-                            builder.Append(", " + str);
-                        }
+                        // 处理回车或换行
+                        string strDisplayName = columns[i].Description.Replace("\r\n", "").Replace("\r", "").Replace("\n", ""); ;
+                        strDisplayName = strDisplayName == "" ? str : strDisplayName;
+
+                        builder.AppendFormat("\r\n");
+                        builder.AppendFormat("        /// <summary>\r\n", string.Empty);
+                        builder.AppendFormat("        /// enum字段名：{0}\r\n", strDisplayName);
+                        builder.AppendFormat("        /// </summary>\r\n", string.Empty);
+                        builder.AppendFormat("        [System.ComponentModel.DataAnnotations.Display(Name = \"{0}\")]\r\n", strDisplayName);
+
+                        builder.AppendFormat("        {0} ,\r\n", str, strDisplayName);
                     }
-                    builder.Append(" }\r\n");
+                    builder.Append("    }\r\n");
                 }
                 else
                 {
-                    builder.Append("}\r\n");
+                    builder.Append("    }\r\n");
                 }
             }
             catch (Exception exception)
             {
                 CYQ.Data.Log.WriteLogToTxt(exception);
             }
+            builder.AppendFormat("    #endregion\r\n");
+
+
             return builder.ToString();
         }
 
