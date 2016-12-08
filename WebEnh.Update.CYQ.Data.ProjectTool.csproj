@@ -57,9 +57,6 @@
     <Content Include="Libs\MySql.Data.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <Content Include="ProjectConfig.txt">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <Content Include="project_128px_1087702_easyicon.net.ico" />
     <None Include="ReadMe.MD">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
