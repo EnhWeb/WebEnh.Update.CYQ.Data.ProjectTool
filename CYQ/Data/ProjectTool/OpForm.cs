@@ -647,7 +647,7 @@
             this.Name = "OpForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CYQ.Data 配置工具 V2.0";
+            this.Text = "CYQ.Data 配置工具 V2.1";
             this.Load += new System.EventHandler(this.OpForm_Load);
             this.gbConn.ResumeLayout(false);
             this.gbConn.PerformLayout();
@@ -690,6 +690,9 @@
 
         private void OpForm_Load(object sender, EventArgs e)
         {
+            //版本号自动生成
+            this.Text = $"WebEnh 枚举实体工具 Version：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+
             this.isIniting = true;
             this.ddlDBType.SelectedIndex = 0;
             this.ddlBuildMode.SelectedIndex = 0;
