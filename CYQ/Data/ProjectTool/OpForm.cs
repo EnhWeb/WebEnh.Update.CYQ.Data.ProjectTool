@@ -632,7 +632,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(524, 331);
+            this.ClientSize = new System.Drawing.Size(524, 332);
             this.Controls.Add(this.lnkCopyPath);
             this.Controls.Add(this.lnkOpenFolder);
             this.Controls.Add(this.linkLabel1);
@@ -647,7 +647,7 @@
             this.Name = "OpForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CYQ.Data 配置工具 V2.1";
+            this.Text = "CYQ.Data 配置工具 V2.0     WebEnh.Update  内部版本号：V1.8";
             this.Load += new System.EventHandler(this.OpForm_Load);
             this.gbConn.ResumeLayout(false);
             this.gbConn.PerformLayout();
