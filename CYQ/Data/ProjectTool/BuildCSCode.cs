@@ -84,18 +84,21 @@
                                 AppendText(sb, "        /// </summary>", new string[0]);
                             }
                             AppendText(sb, "        private {0} _{1};", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
-                            if (!string.IsNullOrEmpty(struct2.Description))
+
+                            //名称简写
+                            string Shorthand_Description = struct2.Description;
+                            if (!string.IsNullOrEmpty(Shorthand_Description))
                             {
-                                struct2.Description = struct2.Description.Replace("\r\n", "    ").Replace("\r", "  ").Replace("\n", "  ");
+                                Shorthand_Description = Shorthand_Description.Replace("\r\n", "    ").Replace("\r", "  ").Replace("\n", "  ");
                                 #region //  从零字符开始，取到指定标志字符处                                
-                                int index = struct2.Description.IndexOfAny(new char[] { '(', '（', ':', '：', ' ', '　', ',', '，','|','｜','.','。' });
-                                index = index == -1 ? struct2.Description.Length : index;
-                                struct2.Description = struct2.Description.Substring(0, index);
+                                int index = Shorthand_Description.IndexOfAny(new char[] { '(', '（', ':', '：', ' ', '　', ',', '，','|','｜','.','。' });
+                                index = index == -1 ? Shorthand_Description.Length : index;
+                                Shorthand_Description = Shorthand_Description.Substring(0, index);
                                 #endregion
                                 AppendText(sb, "        /// <summary>", new string[0]);
                                 AppendText(sb, "        /// {0}", new string[] { struct2.Description });
                                 AppendText(sb, "        /// </summary>", new string[0]);
-                                AppendText(sb, "        [Display(Name = \"{0}\")]", new string[] { struct2.Description });
+                                AppendText(sb, "        [Display(Name = \"{0}\")]", new string[] { Shorthand_Description });
                             }
                             AppendText(sb, "        public {0} {1}", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
                             AppendText(sb, "        {", new string[0]);
