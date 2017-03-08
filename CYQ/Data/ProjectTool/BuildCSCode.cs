@@ -87,6 +87,11 @@
                             if (!string.IsNullOrEmpty(struct2.Description))
                             {
                                 struct2.Description = struct2.Description.Replace("\r\n", "    ").Replace("\r", "  ").Replace("\n", "  ");
+                                #region //  从零字符开始，取到指定标志字符处                                
+                                int index = struct2.Description.IndexOfAny(new char[] { '(', '（', ':', '：', ' ', '　', ',', '，','|','｜','.','。' });
+                                index = index == -1 ? struct2.Description.Length : index;
+                                struct2.Description = struct2.Description.Substring(0, index);
+                                #endregion
                                 AppendText(sb, "        /// <summary>", new string[0]);
                                 AppendText(sb, "        /// {0}", new string[] { struct2.Description });
                                 AppendText(sb, "        /// </summary>", new string[0]);

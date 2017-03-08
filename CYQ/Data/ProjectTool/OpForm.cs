@@ -736,6 +736,9 @@
 
         private void OpForm_Load(object sender, EventArgs e)
         {
+            //版本号自动生成
+            this.Text = $"WebEnh 枚举实体工具 Version：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}";
+
             this.isIniting = true;
             this.ddlDBType.SelectedIndex = 0;
             this.ddlBuildMode.SelectedIndex = 0;
