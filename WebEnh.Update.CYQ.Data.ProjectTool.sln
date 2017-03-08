@@ -13,12 +13,18 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".根目录", ".根目录", 
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
 		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}.Debug|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}.Debug|Any CPU.Build.0 = Release|Any CPU
 		{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}.Debug|x86.ActiveCfg = Debug|x86
 		{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}.Debug|x86.Build.0 = Debug|x86
+		{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}.Release|Any CPU.Build.0 = Release|Any CPU
 		{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}.Release|x86.ActiveCfg = Release|x86
 		{FAF633BC-8597-4E6F-A3DB-7C4DC2717510}.Release|x86.Build.0 = Release|x86
 	EndGlobalSection
