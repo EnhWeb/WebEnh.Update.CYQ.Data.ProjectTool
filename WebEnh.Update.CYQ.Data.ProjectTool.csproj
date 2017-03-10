@@ -56,6 +56,10 @@
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <ItemGroup>
+    <Reference Include="System.Tuples, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>packages\System.Tuples.1.0.0\lib\net20\System.Tuples.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="CYQ.Data" />
     <Reference Include="System" />
@@ -77,6 +81,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="project_128px_1087702_easyicon.net.ico" />
+    <None Include="packages.config" />
     <None Include="ReadMe.MD">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>

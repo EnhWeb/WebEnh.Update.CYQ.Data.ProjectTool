@@ -39,6 +39,17 @@
             Application.Run(new OpForm());
         }
 
+        //public static (string aaa,string bbb) test111()
+        //{
+        //    return
+        //}
+
+
+        //public static System.Tuples.Tuple<string,int,string> test111()
+        //{
+        //    return new System.Tuples.Tuple<string, int, string>() { };
+        //}
+
         public static bool IsEnglish
         {
             get
