@@ -279,10 +279,10 @@
             this.btnOpenProjectFolder = new System.Windows.Forms.Button();
             this.txtNameSpace = new System.Windows.Forms.TextBox();
             this.btnOpenFolder = new System.Windows.Forms.Button();
-            this.btnBuild = new System.Windows.Forms.Button();
             this.lbDefaultNameSpace = new System.Windows.Forms.Label();
             this.ddlBuildMode = new System.Windows.Forms.ComboBox();
             this.lbCodeMode = new System.Windows.Forms.Label();
+            this.btnBuild = new System.Windows.Forms.Button();
             this.lnkGotoUrl = new System.Windows.Forms.LinkLabel();
             this.lnkOpenFolder = new System.Windows.Forms.LinkLabel();
             this.lnkCopyPath = new System.Windows.Forms.LinkLabel();
@@ -558,19 +558,6 @@
             this.btnOpenFolder.UseVisualStyleBackColor = true;
             this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
             // 
-            // btnBuild
-            // 
-            this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuild.Location = new System.Drawing.Point(107, 274);
-            this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(507, 41);
-            this.btnBuild.TabIndex = 5;
-            this.btnBuild.Text = "生成文件";
-            this.btnBuild.UseVisualStyleBackColor = true;
-            this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
-            // 
             // lbDefaultNameSpace
             // 
             this.lbDefaultNameSpace.AutoSize = true;
@@ -606,6 +593,19 @@
             this.lbCodeMode.TabIndex = 1;
             this.lbCodeMode.Text = "编码模式：";
             this.lbCodeMode.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // btnBuild
+            // 
+            this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnBuild.Location = new System.Drawing.Point(107, 274);
+            this.btnBuild.Name = "btnBuild";
+            this.btnBuild.Size = new System.Drawing.Size(507, 41);
+            this.btnBuild.TabIndex = 5;
+            this.btnBuild.Text = "生成文件";
+            this.btnBuild.UseVisualStyleBackColor = true;
+            this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);
             // 
             // lnkGotoUrl
             // 
@@ -695,7 +695,7 @@
             this.Name = "OpForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CYQ.Data 配置工具 V2.0     WebEnh.Update  内部版本号：V1.9（2017-03-08）";
+            this.Text = "CYQ.Data 配置工具 V2.0     WebEnh.Update  内部版本号：V1.9（2017-06-23）";
             this.Load += new System.EventHandler(this.OpForm_Load);
             this.gbConn.ResumeLayout(false);
             this.gbConn.PerformLayout();
@@ -739,7 +739,8 @@
         private void OpForm_Load(object sender, EventArgs e)
         {
             //版本号自动生成
-            this.Text = $"CYQ.Data 配置工具 V2.0  -  WebEnh.Update 枚举实体生成工具 InsideVersion：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}（2017-03-08）";
+            this.Text = $"CYQ.Data 配置工具 V2.0  -  WebEnh.Update 枚举实体生成工具 InsideVersion：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}（2017-06-23）";
+            //CYQ.Data 配置工具 V2.0     WebEnh.Update  内部版本号：V1.9（2017-06-23）
 
             this.isIniting = true;
             this.ddlDBType.SelectedIndex = 0;
