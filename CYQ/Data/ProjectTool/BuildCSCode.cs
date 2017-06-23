@@ -77,29 +77,50 @@
                             type = DataType.GetType(struct2.SqlType);
 
                             AppendText(sb, "\r\n", new string[0]);//添加换行
-                            if (!string.IsNullOrEmpty(struct2.Description))
+
+                            string Longhand_Description = struct2.Description
+                            #region Longhand_Description 处理
+                                .Replace("\r\n", "        /// ")
+                                .Replace("\r", "        /// ")
+                                .Replace("\n", "        /// ")
+                                .Replace("        /// ", "\r\n        /// ")
+                                ;//移除回车等换行字符串
+
+                            if (string.IsNullOrEmpty(Longhand_Description))
                             {
-                                AppendText(sb, "        /// <summary>", new string[0]);
-                                AppendText(sb, "        /// 私有变量：{0}", new string[] { struct2.Description });
-                                AppendText(sb, "        /// </summary>", new string[0]);
-                            }
+                                Longhand_Description = "[ 无说明描术 ]";
+                            } 
+                            #endregion
+
+                            AppendText(sb, "        /// <summary>", new string[0]);
+                            AppendText(sb, "        /// 私有变量：{0}", new string[] { Longhand_Description });
+                            AppendText(sb, "        /// </summary>", new string[0]);
                             AppendText(sb, "        private {0} _{1};", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
 
                             //名称简写
                             string Shorthand_Description = struct2.Description;
-                            if (!string.IsNullOrEmpty(Shorthand_Description))
+                            #region Shorthand_Description 处理
+                            if (string.IsNullOrEmpty(Shorthand_Description))
+                            {
+                                Shorthand_Description = "[ 无说明描术 ]";
+                            }
+                            else
                             {
                                 Shorthand_Description = Shorthand_Description.Replace("\r\n", "    ").Replace("\r", "  ").Replace("\n", "  ");
+
                                 #region //  从零字符开始，取到指定标志字符处                                
-                                int index = Shorthand_Description.IndexOfAny(new char[] { '(', '（', ':', '：', ' ', '　', ',', '，','|','｜','.','。' });
+                                int index = Shorthand_Description.IndexOfAny(new char[] { '(', '（', ':', '：', ' ', '　', ',', '，', '|', '｜', '.', '。' });
                                 index = index == -1 ? Shorthand_Description.Length : index;
                                 Shorthand_Description = Shorthand_Description.Substring(0, index);
                                 #endregion
-                                AppendText(sb, "        /// <summary>", new string[0]);
-                                AppendText(sb, "        /// {0}", new string[] { struct2.Description });
-                                AppendText(sb, "        /// </summary>", new string[0]);
-                                AppendText(sb, "        [Display(Name = \"{0}\")]", new string[] { Shorthand_Description });
-                            }
+                            } 
+                            #endregion
+
+                            AppendText(sb, "        /// <summary>", new string[0]);
+                            AppendText(sb, "        /// {0}", new string[] { Longhand_Description });
+                            AppendText(sb, "        /// </summary>", new string[0]);
+                            AppendText(sb, "        [Display(Name = \"{0}\")]", new string[] { Shorthand_Description });
+
                             AppendText(sb, "        public {0} {1}", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
                             AppendText(sb, "        {", new string[0]);
                             AppendText(sb, "            get", new string[0]);
