@@ -246,12 +246,20 @@
             }
         }
 
-        internal static void Create(object nameObj)
+        /// <summary>
+        /// 创建
+        /// </summary>
+        /// <param name="nameObj">配置名称</param>
+        /// <param name="tablenames">表名，如果为 all 则所有表，否则为：tablename1,tablename2,tablename3,</param>
+        internal static void Create(object KeyConnName_ValueTableNames)
         {
             int count = 0;
             try
             {
-                string str = Convert.ToString(nameObj);
+                KeyValuePair<string, string> keyValuePair = (KeyValuePair<string, string>)KeyConnName_ValueTableNames;
+                string str = Convert.ToString(keyValuePair.Key);
+                string tablenames = keyValuePair.Value;
+
                 using (ProjectConfig config = new ProjectConfig())
                 {
                     try
@@ -259,19 +267,38 @@
                         if (config.Fill("Name='" + str + "'"))
                         {
                             string dbName = string.Empty;
-                            Dictionary<string, string> tables = DBTool.GetTables(config.Conn, out dbName);
-                            if ((tables != null) && (tables.Count > 0))
+                            string errInfo = string.Empty;
+
+                            Dictionary<string, string> tables = DBTool.GetTables(config.Conn, out dbName,out errInfo);
+
+                            Dictionary<string, string> selectTables = new Dictionary<string, string>();
+
+                            if (tablenames == "all") // 只留下已选择的表
+                            {
+                                selectTables = tables;
+                            }
+                            else
+                            {
+                                string[] selectTableNames = tablenames.Split(new[] { ',' }, StringSplitOptions.RemoveEmptyEntries);
+
+                                foreach (var tablename in selectTableNames)
+                                {
+                                    selectTables.Add(tablename, tables[tablename]);
+                                }
+                            }
+
+                            if ((selectTables != null) && (selectTables.Count > 0))
                             {
                                 char ch = dbName[0];
                                 dbName = ch.ToString().ToUpper() + dbName.Substring(1, dbName.Length - 1);
-                                count = tables.Count;
+                                count = selectTables.Count;
                                 if (config.BuildMode.Contains("枚举"))
                                 {
-                                    BuildTableEnumText(tables, config, dbName);
+                                    BuildTableEnumText(selectTables, config, dbName);
                                 }
                                 else
                                 {
-                                    BuildTableEntityText(tables, config, dbName);
+                                    BuildTableEntityText(selectTables, config, dbName);
                                 }
                             }
                         }

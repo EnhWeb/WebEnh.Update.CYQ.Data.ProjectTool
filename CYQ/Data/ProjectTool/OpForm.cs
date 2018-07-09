@@ -45,6 +45,17 @@
         private TextBox txtNameSpace;
         private LinkLabel linkLabel1;
         private GroupBox groupBox1;
+        private GroupBox groupBox2;
+        private ListView listView1;
+        private ColumnHeader columnHeader1;
+        private ColumnHeader columnHeader2;
+        private Panel panel2;
+        private Panel panel1;
+        private LinkLabel linkLabel3;
+        private LinkLabel linkLabel2;
+        private LinkLabel linkLabel4;
+        private Button button1;
+        private TextBox textBox1;
         private TextBox txtProjectPath;
 
         public OpForm()
@@ -75,15 +86,46 @@
                             return;
                         }
                     }
-                    string parameter = this.SaveConfig();
+                    string connName = this.SaveConfig();
+                    string tablenames = this.GetSelectTableNames();
+
+                    System.Collections.Generic.KeyValuePair<string, string> KeyConnName_ValueTableNames = new System.Collections.Generic.KeyValuePair<string, string>(connName,tablenames);
+
                     this.btnBuild.Enabled = false;
-                    new Thread(new ParameterizedThreadStart(BuildCSCode.Create)) { IsBackground = true }.Start(parameter);
+                    new Thread(new ParameterizedThreadStart(BuildCSCode.Create)) { IsBackground = true }.Start(KeyConnName_ValueTableNames);
                 }
             }
             else
             {
                 MessageBox.Show("Fail！", "Tip");
             }
+        }
+
+        private string GetSelectTableNames()
+        {
+            try
+            {
+                string tablenames = string.Empty;
+                foreach(ListViewItem item in listView1.Items)
+                {
+                    if (item.Checked)
+                    {
+                        tablenames += $"{item.Text},";
+                    }
+                }
+
+                if(string.IsNullOrWhiteSpace(tablenames))
+                {
+                    MessageBox.Show("当前未选择表，请选择！");
+                }
+
+                return tablenames;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"GetSelectTableNames:{ex.Message}");
+                return "all";
+            }            
         }
 
         private void btnOpenFolder_Click(object sender, EventArgs e)
@@ -257,6 +299,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem(new string[] {
+            "table name",
+            "table desc"}, -1);
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(OpForm));
             this.ddlDBType = new System.Windows.Forms.ComboBox();
             this.lbDalType = new System.Windows.Forms.Label();
@@ -289,8 +334,22 @@
             this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
             this.linkLabel1 = new System.Windows.Forms.LinkLabel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.listView1 = new System.Windows.Forms.ListView();
+            this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel3 = new System.Windows.Forms.LinkLabel();
+            this.linkLabel4 = new System.Windows.Forms.LinkLabel();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.gbConn.SuspendLayout();
             this.gbBuild.SuspendLayout();
+            this.groupBox2.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // ddlDBType
@@ -599,9 +658,9 @@
             this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuild.Location = new System.Drawing.Point(107, 274);
+            this.btnBuild.Location = new System.Drawing.Point(107, 589);
             this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(507, 41);
+            this.btnBuild.Size = new System.Drawing.Size(507, 38);
             this.btnBuild.TabIndex = 5;
             this.btnBuild.Text = "生成文件";
             this.btnBuild.UseVisualStyleBackColor = true;
@@ -613,7 +672,7 @@
             this.lnkGotoUrl.AutoSize = true;
             this.lnkGotoUrl.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkGotoUrl.LinkColor = System.Drawing.Color.Red;
-            this.lnkGotoUrl.Location = new System.Drawing.Point(637, 329);
+            this.lnkGotoUrl.Location = new System.Drawing.Point(637, 641);
             this.lnkGotoUrl.Name = "lnkGotoUrl";
             this.lnkGotoUrl.Size = new System.Drawing.Size(77, 12);
             this.lnkGotoUrl.TabIndex = 7;
@@ -627,7 +686,7 @@
             this.lnkOpenFolder.AutoSize = true;
             this.lnkOpenFolder.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkOpenFolder.LinkColor = System.Drawing.Color.Blue;
-            this.lnkOpenFolder.Location = new System.Drawing.Point(554, 329);
+            this.lnkOpenFolder.Location = new System.Drawing.Point(554, 641);
             this.lnkOpenFolder.Name = "lnkOpenFolder";
             this.lnkOpenFolder.Size = new System.Drawing.Size(77, 12);
             this.lnkOpenFolder.TabIndex = 7;
@@ -641,7 +700,7 @@
             this.lnkCopyPath.AutoSize = true;
             this.lnkCopyPath.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkCopyPath.LinkColor = System.Drawing.Color.BlueViolet;
-            this.lnkCopyPath.Location = new System.Drawing.Point(469, 329);
+            this.lnkCopyPath.Location = new System.Drawing.Point(469, 641);
             this.lnkCopyPath.Name = "lnkCopyPath";
             this.lnkCopyPath.Size = new System.Drawing.Size(77, 12);
             this.lnkCopyPath.TabIndex = 8;
@@ -655,7 +714,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.Red;
-            this.linkLabel1.Location = new System.Drawing.Point(17, 329);
+            this.linkLabel1.Location = new System.Drawing.Point(17, 641);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(149, 12);
             this.linkLabel1.TabIndex = 7;
@@ -668,18 +727,138 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(-8, 320);
+            this.groupBox1.Location = new System.Drawing.Point(-8, 632);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(747, 1);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.panel2);
+            this.groupBox2.Controls.Add(this.panel1);
+            this.groupBox2.Location = new System.Drawing.Point(4, 274);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(718, 309);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "表选择";
+            // 
+            // listView1
+            // 
+            this.listView1.CheckBoxes = true;
+            this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2});
+            this.listView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listView1.HideSelection = false;
+            this.listView1.ImeMode = System.Windows.Forms.ImeMode.Disable;
+            listViewItem1.StateImageIndex = 0;
+            this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
+            listViewItem1});
+            this.listView1.LabelWrap = false;
+            this.listView1.Location = new System.Drawing.Point(0, 0);
+            this.listView1.Name = "listView1";
+            this.listView1.ShowGroups = false;
+            this.listView1.Size = new System.Drawing.Size(712, 251);
+            this.listView1.TabIndex = 0;
+            this.listView1.UseCompatibleStateImageBehavior = false;
+            this.listView1.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader1
+            // 
+            this.columnHeader1.Text = "表名称";
+            this.columnHeader1.Width = 300;
+            // 
+            // columnHeader2
+            // 
+            this.columnHeader2.Text = "表描述";
+            this.columnHeader2.Width = 370;
+            // 
+            // panel1
+            // 
+            this.panel1.Controls.Add(this.button1);
+            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.linkLabel4);
+            this.panel1.Controls.Add(this.linkLabel3);
+            this.panel1.Controls.Add(this.linkLabel2);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel1.Location = new System.Drawing.Point(3, 17);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(712, 38);
+            this.panel1.TabIndex = 1;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.listView1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 55);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(712, 251);
+            this.panel2.TabIndex = 2;
+            // 
+            // linkLabel2
+            // 
+            this.linkLabel2.AutoSize = true;
+            this.linkLabel2.Location = new System.Drawing.Point(579, 12);
+            this.linkLabel2.Name = "linkLabel2";
+            this.linkLabel2.Size = new System.Drawing.Size(29, 12);
+            this.linkLabel2.TabIndex = 0;
+            this.linkLabel2.TabStop = true;
+            this.linkLabel2.Text = "全选";
+            this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
+            // 
+            // linkLabel3
+            // 
+            this.linkLabel3.AutoSize = true;
+            this.linkLabel3.Location = new System.Drawing.Point(614, 12);
+            this.linkLabel3.Name = "linkLabel3";
+            this.linkLabel3.Size = new System.Drawing.Size(41, 12);
+            this.linkLabel3.TabIndex = 1;
+            this.linkLabel3.TabStop = true;
+            this.linkLabel3.Text = "全不选";
+            this.linkLabel3.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel3_LinkClicked);
+            // 
+            // linkLabel4
+            // 
+            this.linkLabel4.AutoSize = true;
+            this.linkLabel4.Location = new System.Drawing.Point(661, 12);
+            this.linkLabel4.Name = "linkLabel4";
+            this.linkLabel4.Size = new System.Drawing.Size(29, 12);
+            this.linkLabel4.TabIndex = 2;
+            this.linkLabel4.TabStop = true;
+            this.linkLabel4.Text = "反选";
+            this.linkLabel4.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel4_LinkClicked);
+            // 
+            // textBox1
+            // 
+            this.textBox1.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.SuggestAppend;
+            this.textBox1.AutoCompleteSource = System.Windows.Forms.AutoCompleteSource.CustomSource;
+            this.textBox1.HideSelection = false;
+            this.textBox1.Location = new System.Drawing.Point(8, 9);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(246, 21);
+            this.textBox1.TabIndex = 3;
+            this.toolTip1.SetToolTip(this.textBox1, "用来查找指定表，可通过表名称和表描术来查找。");
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(260, 9);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(34, 21);
+            this.button1.TabIndex = 4;
+            this.button1.Text = "搜";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // OpForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 350);
+            this.ClientSize = new System.Drawing.Size(726, 662);
+            this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lnkCopyPath);
             this.Controls.Add(this.lnkOpenFolder);
@@ -701,6 +880,10 @@
             this.gbConn.PerformLayout();
             this.gbBuild.ResumeLayout(false);
             this.gbBuild.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
+            this.panel2.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -722,6 +905,8 @@
             Process.Start(AppDomain.CurrentDomain.BaseDirectory);
         }
 
+        private string currectConn = "";
+
         private void LoadConfig(string name)
         {
             if (!string.IsNullOrEmpty(name))
@@ -731,8 +916,46 @@
                     if (config.Fill("Name='" + name + "'"))
                     {
                         config.UI.SetToAll(this, new object[0]);
+
+                        currectConn = config.Conn;
+
+                        this.LoadTables(config);
                     }
                 }
+            }
+        }
+
+        private void LoadTables(ProjectConfig config = null)
+        {
+            // 读取表名
+            string dbName = string.Empty;
+            string errInfo = string.Empty;
+            try
+            {
+                string conn = config == null ? currectConn : config.Conn;
+                var tables = CYQ.Data.Tool.DBTool.GetTables(conn, out dbName, out errInfo);
+
+                if (!string.IsNullOrWhiteSpace(errInfo))
+                {
+                    throw new Exception(errInfo);
+                }
+
+                listView1.Items.Clear();
+
+                textBox1.AutoCompleteCustomSource.Clear();
+                foreach (var item in tables)
+                {
+                    textBox1.AutoCompleteCustomSource.Add(item.Key);
+                    if (!string.IsNullOrWhiteSpace(item.Value))
+                        textBox1.AutoCompleteCustomSource.Add(item.Value);
+
+                    listView1.Items.Add(new ListViewItem(new[] { item.Key, item.Value }) { Checked = true });
+                }
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"读取表时出错：{ex.Message}");
             }
         }
 
@@ -857,6 +1080,52 @@
         private void gbBuild_Enter(object sender, EventArgs e)
         {
 
+        }
+
+        private void linkLabel2_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            foreach (ListViewItem item in listView1.Items)
+            {
+                item.Checked = true;
+            }
+        }
+
+        private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            foreach (ListViewItem item in listView1.Items)
+            {
+                item.Checked = false;
+            }
+        }
+
+        private void linkLabel4_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            foreach (ListViewItem item in listView1.Items)
+            {
+                item.Checked = !item.Checked;
+            }
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.LoadTables();
+
+            foreach (ListViewItem item in listView1.Items)
+            {
+                if (item.Text.ToLower().Trim().Contains(textBox1.Text.ToLower().Trim()))
+                {
+                    
+                }
+                else
+                {
+                    item.Remove();
+                }
+            }
         }
     }
 }
