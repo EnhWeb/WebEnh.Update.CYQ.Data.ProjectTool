@@ -370,7 +370,7 @@
             "Xml"});
             this.ddlDBType.Location = new System.Drawing.Point(104, 47);
             this.ddlDBType.Name = "ddlDBType";
-            this.ddlDBType.Size = new System.Drawing.Size(439, 20);
+            this.ddlDBType.Size = new System.Drawing.Size(454, 20);
             this.ddlDBType.TabIndex = 0;
             this.ddlDBType.SelectedIndexChanged += new System.EventHandler(this.ddlProvider_SelectedIndexChanged);
             // 
@@ -406,9 +406,9 @@
             // btnTestConn
             // 
             this.btnTestConn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestConn.Location = new System.Drawing.Point(560, 24);
+            this.btnTestConn.Location = new System.Drawing.Point(574, 20);
             this.btnTestConn.Name = "btnTestConn";
-            this.btnTestConn.Size = new System.Drawing.Size(133, 23);
+            this.btnTestConn.Size = new System.Drawing.Size(133, 47);
             this.btnTestConn.TabIndex = 3;
             this.btnTestConn.Text = "测试链接";
             this.btnTestConn.UseVisualStyleBackColor = true;
@@ -421,7 +421,7 @@
             this.ddlName.FormattingEnabled = true;
             this.ddlName.Location = new System.Drawing.Point(104, 21);
             this.ddlName.Name = "ddlName";
-            this.ddlName.Size = new System.Drawing.Size(439, 20);
+            this.ddlName.Size = new System.Drawing.Size(454, 20);
             this.ddlName.TabIndex = 0;
             this.ddlName.SelectedIndexChanged += new System.EventHandler(this.ddlName_SelectedIndexChanged);
             // 
@@ -655,12 +655,11 @@
             // 
             // btnBuild
             // 
-            this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
+            this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuild.Location = new System.Drawing.Point(107, 589);
+            this.btnBuild.Location = new System.Drawing.Point(15, 589);
             this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(507, 38);
+            this.btnBuild.Size = new System.Drawing.Size(696, 38);
             this.btnBuild.TabIndex = 5;
             this.btnBuild.Text = "生成文件";
             this.btnBuild.UseVisualStyleBackColor = true;
@@ -748,6 +747,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.panel2);
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(4, 274);
@@ -822,6 +824,7 @@
             // 
             // linkLabel4
             // 
+            this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel4.AutoSize = true;
             this.linkLabel4.Location = new System.Drawing.Point(661, 12);
             this.linkLabel4.Name = "linkLabel4";
@@ -833,6 +836,7 @@
             // 
             // linkLabel3
             // 
+            this.linkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel3.AutoSize = true;
             this.linkLabel3.Location = new System.Drawing.Point(614, 12);
             this.linkLabel3.Name = "linkLabel3";
@@ -844,6 +848,7 @@
             // 
             // linkLabel2
             // 
+            this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel2.AutoSize = true;
             this.linkLabel2.Location = new System.Drawing.Point(579, 12);
             this.linkLabel2.Name = "linkLabel2";
@@ -869,7 +874,6 @@
             this.Controls.Add(this.btnBuild);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MaximizeBox = false;
             this.MinimumSize = new System.Drawing.Size(600, 388);
             this.Name = "OpForm";
             this.ShowIcon = false;
