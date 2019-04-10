@@ -98,6 +98,7 @@
                     System.Collections.Generic.KeyValuePair<string, string> KeyConnName_ValueTableNames = new System.Collections.Generic.KeyValuePair<string, string>(connName,tablenames);
 
                     this.btnBuild.Enabled = false;
+                    this.btnBuild.Text = "正在生成 .cs 代码文件 ...";
                     new Thread(new ParameterizedThreadStart(BuildCSCode.Create)) { IsBackground = true }.Start(KeyConnName_ValueTableNames);
                 }
             }
@@ -172,6 +173,7 @@
 
         private void BuildCSCode_OnCreateEnd(int count)
         {
+            this.btnBuild.Text = this.btnBuild.Tag.ToString();
             this.btnBuild.Enabled = true;
             MessageBox.Show("OK，Total : " + count + " tables", "Tip");
         }
@@ -671,6 +673,7 @@
             this.btnBuild.Name = "btnBuild";
             this.btnBuild.Size = new System.Drawing.Size(696, 38);
             this.btnBuild.TabIndex = 5;
+            this.btnBuild.Tag = "生成文件";
             this.btnBuild.Text = "生成文件";
             this.btnBuild.UseVisualStyleBackColor = true;
             this.btnBuild.Click += new System.EventHandler(this.btnBuild_Click);

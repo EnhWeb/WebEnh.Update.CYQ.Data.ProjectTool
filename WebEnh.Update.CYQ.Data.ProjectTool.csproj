@@ -123,12 +123,12 @@
     <Compile Include="CYQ\Data\ProjectTool\ProjectConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Libs\CYQ.Data.dll">
+    <None Include="Libs\CYQ.Data.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
-    <Content Include="Libs\MySql.Data.dll">
+    </None>
+    <None Include="Libs\MySql.Data.dll">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
+    </None>
     <Content Include="project_128px_1087702_easyicon.net.ico" />
     <None Include="packages.config" />
     <None Include="Properties\app.manifest" />

@@ -10,8 +10,14 @@
     using System.Runtime.CompilerServices;
     using System.Text;
 
+    /// <summary>
+    /// BuildCSCode
+    /// </summary>
     internal class BuildCSCode
     {
+        /// <summary>
+        /// 创建结束后事件
+        /// </summary>
         internal static  event CreateEndHandle OnCreateEnd;
 
         private static void AppendText(StringBuilder sb, string text, params string[] format)
