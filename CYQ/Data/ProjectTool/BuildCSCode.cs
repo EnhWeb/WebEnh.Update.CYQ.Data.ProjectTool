@@ -187,10 +187,15 @@
 
 
 
-                builder.AppendFormat("using System;\r\n\r\nnamespace {0}\r\n{{\r\n", str);//开始
+                builder.AppendFormat(
+                    @"using System;
+using System.ComponentModel.DataAnnotations;
+namespace {0}
+{{
+", str);//开始
 
 
-                builder.Append("\r\n\r\n    #region //    数据库中表名枚举 \r\n");
+                builder.Append("    #region //    数据库中表名枚举 \r\n");
                 builder.AppendFormat("    /// <summary>\r\n");
                 builder.AppendFormat("    /// {0} 数据库中表集合枚举\r\n", dbName);
                 builder.AppendFormat("    /// </summary>\r\n");
@@ -210,7 +215,7 @@
                     builder.AppendFormat("        /// <summary>\r\n");
                     builder.AppendFormat("        /// enum表名：{0}\r\n", strDisplayName);
                     builder.AppendFormat("        /// </summary>\r\n");
-                    builder.AppendFormat("        [System.ComponentModel.DataAnnotations.Display(Name = \"{0}\")]\r\n", strDisplayName);
+                    builder.AppendFormat("        [Display(Name = \"{0}\")]\r\n", strDisplayName);
                     builder.AppendFormat("        {0} ,\r\n\r\n", FormatKey(pair.Key));//表名
                 }
                 //builder[builder.Length - 1] = ' ';
@@ -220,17 +225,15 @@
 
 
 
-
-
-
-
-                builder.Append("\r\n\r\n    #region //    单个表枚举（带字段名和属性显示值）\r\n");
+                builder.Append("\r\n\r\n    #region [    单个表枚举（带字段名和属性显示值）    ]\r\n");
                 foreach (KeyValuePair<string, string> pair2 in tables)
                 {
                     builder.Append(GetFiledEnum(pair2.Key, pair2.Value, config));
                 }
 
-                builder.Append("    #endregion\r\n}");//结束
+                builder.Append(
+@"    #endregion
+}");//结束
 
 
                 string str2 = "TableNames.cs";
@@ -411,12 +414,12 @@
             tableName_displayName = tableName_displayName == "" ? tableName : tableName_displayName;
 
 
-            builder.AppendFormat("    #region //    表名：{0}    \t\t备注名：{1}\r\n", tableName, tableName_displayName);
+            builder.AppendFormat("    #region [    表名：{0}    \t\t备注名：{1}    ]\r\n", tableName, tableName_displayName);
             builder.AppendFormat("    /// <summary>\r\n", string.Empty);
-            builder.AppendFormat("    /// enum表名：{0}\r\n", tableName_displayName);
+            builder.AppendFormat("    /// enum 表名：{0}\r\n", tableName_displayName);
             builder.AppendFormat("    /// </summary>\r\n", string.Empty);
             builder.AppendFormat("    public enum {0}\r\n", FormatKey(tableName));
-            builder.AppendFormat("    {{\r\n");
+            builder.AppendFormat("    {{");
             try
             {
                 MDataColumn columns = DBTool.GetColumns(tableName, config.Conn);
@@ -431,9 +434,9 @@
 
                         builder.AppendFormat("\r\n");
                         builder.AppendFormat("        /// <summary>\r\n", string.Empty);
-                        builder.AppendFormat("        /// enum字段名：{0}\r\n", strDisplayName);
+                        builder.AppendFormat("        /// enum 字段名：{0}\r\n", strDisplayName);
                         builder.AppendFormat("        /// </summary>\r\n", string.Empty);
-                        builder.AppendFormat("        [System.ComponentModel.DataAnnotations.Display(Name = \"{0}\")]\r\n", strDisplayName);
+                        builder.AppendFormat("        [Display(Name = \"{0}\")]\r\n", strDisplayName);
 
                         builder.AppendFormat("        {0} ,\r\n", str, strDisplayName);
                     }
