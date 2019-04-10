@@ -37,9 +37,9 @@
             try
             {
                 StringBuilder sb = new StringBuilder(50000);
-                string str2 = string.Format(config.NameSpace, dbName).TrimEnd(new char[] { '.' });
+                string str2 = string.Format(config.NameSpace, dbName+"DB").TrimEnd(new char[] { '.' });
                 AppendText(sb, "using System;", new string[0]);
-                AppendText(sb, "using System.ComponentModel.DataAnnotations;\r\n", new string[0]);
+                AppendText(sb, "using System.ComponentModel.DataAnnotations;\r\n\r\n", new string[0]);
                 AppendText(sb, "namespace {0}", new string[] { str2 });
                 AppendText(sb, "{", new string[0]);
 
@@ -179,7 +179,7 @@
             {
                 StringBuilder builder = new StringBuilder(50000);
 
-                string str = string.Format(config.NameSpace, dbName).TrimEnd(new char[] { '.' });//得到命名空间名称
+                string str = string.Format(config.NameSpace, dbName+"DB").TrimEnd(new char[] { '.' });//得到命名空间名称
 
                 builder.AppendFormat(
                     @"using System;

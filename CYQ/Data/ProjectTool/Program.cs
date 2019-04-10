@@ -23,6 +23,8 @@
         [STAThread]
         private static void Main(string[] para)
         {
+            AppDomain.CurrentDomain.AppendPrivatePath(Application.StartupPath + @"\Libs\");
+
             if (para.Length > 0)
             {
                 path = para[0].TrimEnd(new char[] { '"' });

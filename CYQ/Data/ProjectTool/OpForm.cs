@@ -11,6 +11,9 @@
     using System.Threading;
     using System.Windows.Forms;
 
+    /// <summary>
+    /// OpForm
+    /// </summary>
     public class OpForm : Form
     {
         private Button btnBuild;
@@ -657,7 +660,7 @@
             // 
             this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuild.Location = new System.Drawing.Point(15, 589);
+            this.btnBuild.Location = new System.Drawing.Point(15, 492);
             this.btnBuild.Name = "btnBuild";
             this.btnBuild.Size = new System.Drawing.Size(696, 38);
             this.btnBuild.TabIndex = 5;
@@ -671,7 +674,7 @@
             this.lnkGotoUrl.AutoSize = true;
             this.lnkGotoUrl.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkGotoUrl.LinkColor = System.Drawing.Color.Red;
-            this.lnkGotoUrl.Location = new System.Drawing.Point(637, 641);
+            this.lnkGotoUrl.Location = new System.Drawing.Point(637, 544);
             this.lnkGotoUrl.Name = "lnkGotoUrl";
             this.lnkGotoUrl.Size = new System.Drawing.Size(77, 12);
             this.lnkGotoUrl.TabIndex = 7;
@@ -685,7 +688,7 @@
             this.lnkOpenFolder.AutoSize = true;
             this.lnkOpenFolder.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkOpenFolder.LinkColor = System.Drawing.Color.Blue;
-            this.lnkOpenFolder.Location = new System.Drawing.Point(554, 641);
+            this.lnkOpenFolder.Location = new System.Drawing.Point(554, 544);
             this.lnkOpenFolder.Name = "lnkOpenFolder";
             this.lnkOpenFolder.Size = new System.Drawing.Size(77, 12);
             this.lnkOpenFolder.TabIndex = 7;
@@ -699,7 +702,7 @@
             this.lnkCopyPath.AutoSize = true;
             this.lnkCopyPath.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkCopyPath.LinkColor = System.Drawing.Color.BlueViolet;
-            this.lnkCopyPath.Location = new System.Drawing.Point(469, 641);
+            this.lnkCopyPath.Location = new System.Drawing.Point(469, 544);
             this.lnkCopyPath.Name = "lnkCopyPath";
             this.lnkCopyPath.Size = new System.Drawing.Size(77, 12);
             this.lnkCopyPath.TabIndex = 8;
@@ -713,7 +716,7 @@
             this.linkLabel1.AutoSize = true;
             this.linkLabel1.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.linkLabel1.LinkColor = System.Drawing.Color.Red;
-            this.linkLabel1.Location = new System.Drawing.Point(17, 641);
+            this.linkLabel1.Location = new System.Drawing.Point(17, 544);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(149, 12);
             this.linkLabel1.TabIndex = 7;
@@ -738,7 +741,7 @@
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox1.Location = new System.Drawing.Point(-8, 632);
+            this.groupBox1.Location = new System.Drawing.Point(-8, 535);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(747, 1);
             this.groupBox1.TabIndex = 9;
@@ -754,7 +757,7 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(4, 274);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(718, 309);
+            this.groupBox2.Size = new System.Drawing.Size(718, 212);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "表选择";
@@ -765,7 +768,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 55);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(712, 251);
+            this.panel2.Size = new System.Drawing.Size(712, 154);
             this.panel2.TabIndex = 2;
             // 
             // listView1
@@ -784,7 +787,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
             this.listView1.ShowGroups = false;
-            this.listView1.Size = new System.Drawing.Size(712, 251);
+            this.listView1.Size = new System.Drawing.Size(712, 154);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -862,7 +865,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 662);
+            this.ClientSize = new System.Drawing.Size(726, 565);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lnkCopyPath);
@@ -876,7 +879,6 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MinimumSize = new System.Drawing.Size(600, 388);
             this.Name = "OpForm";
-            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "CYQ.Data 配置工具 V2.1     WebEnh.Update  内部版本号：V1.9（2019-04-12）";
             this.Load += new System.EventHandler(this.OpForm_Load);
