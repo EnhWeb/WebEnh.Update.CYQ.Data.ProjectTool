@@ -45,7 +45,8 @@
                 StringBuilder sb = new StringBuilder(50000);
                 string str2 = string.Format(config.NameSpace, dbName+"DB").TrimEnd(new char[] { '.' });
                 AppendText(sb, "using System;", new string[0]);
-                AppendText(sb, "using System.ComponentModel.DataAnnotations;\r\n\r\n", new string[0]);
+                AppendText(sb, "using System.ComponentModel.DataAnnotations;", new string[0]);
+                AppendText(sb, "using System.ComponentModel;\r\n", new string[0]);
                 AppendText(sb, "namespace {0}", new string[] { str2 });
                 AppendText(sb, "{", new string[0]);
 
@@ -55,7 +56,7 @@
                     AppendText(sb, "    /// <summary>", new string[0]);
                     AppendText(sb, "    /// {0}", new string[] { description });
                     AppendText(sb, "    /// </summary>", new string[0]);
-                    AppendText(sb, "    [System.ComponentModel.DisplayName(\"{0}\")]", new string[] { description });//实体表名的指定方法不是这样操作的，需更新，有空再更新
+                    AppendText(sb, "    [DisplayName(\"{0}\")]", new string[] { description });//实体表名的指定方法不是这样操作的，需更新，有空再更新
                 }
                 AppendText(sb, "    public class {0} {1}", new string[] { str + config.EntitySuffix, flag ? "" : ": CYQ.Data.Orm.OrmBase" });
                 AppendText(sb, "    {", new string[0]);
@@ -71,6 +72,7 @@
                 {
                     string name = string.Empty;
                     Type type = null;
+                    
                     if (config.ForTwoOnly)
                     {
                         foreach (MCellStruct struct2 in columns)
@@ -81,9 +83,8 @@
                                 name = FixName(name);
                             }
                             type = DataType.GetType(struct2.SqlType);
-
-                            AppendText(sb, "\r\n", new string[0]);//添加换行
-
+                            string typename = FormatType(type.Name, type.IsValueType, config.ValueTypeNullable);
+                            // 详细描述
                             string Longhand_Description = struct2.Description
                             #region Longhand_Description 处理
                                 .Replace("\r\n", "        /// ")
@@ -95,15 +96,9 @@
                             if (string.IsNullOrEmpty(Longhand_Description))
                             {
                                 Longhand_Description = "[ 无说明描术 ]";
-                            } 
+                            }
                             #endregion
-
-                            AppendText(sb, "        /// <summary>", new string[0]);
-                            AppendText(sb, "        /// 私有变量：{0}", new string[] { Longhand_Description });
-                            AppendText(sb, "        /// </summary>", new string[0]);
-                            AppendText(sb, "        private {0} _{1};", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
-
-                            //名称简写
+                            // 名称简写
                             string Shorthand_Description = struct2.Description;
                             #region Shorthand_Description 处理
                             if (string.IsNullOrEmpty(Shorthand_Description))
@@ -119,15 +114,21 @@
                                 index = index == -1 ? Shorthand_Description.Length : index;
                                 Shorthand_Description = Shorthand_Description.Substring(0, index);
                                 #endregion
-                            } 
+                            }
                             #endregion
+
+                            AppendText(sb, "#region [ public  {0} {1} {2} ]", new string[] { typename.PadRight(10), name.PadRight(30), Shorthand_Description });//添加换行
+
+                            AppendText(sb, "        /// <summary>", new string[0]);
+                            AppendText(sb, "        /// 私有变量：{0}", new string[] { Longhand_Description });
+                            AppendText(sb, "        /// </summary>", new string[0]);
+                            AppendText(sb, "        private {0} _{1};", new string[] { typename, name });
 
                             AppendText(sb, "        /// <summary>", new string[0]);
                             AppendText(sb, "        /// {0}", new string[] { Longhand_Description });
                             AppendText(sb, "        /// </summary>", new string[0]);
                             AppendText(sb, "        [Display(Name = \"{0}\")]", new string[] { Shorthand_Description });
-
-                            AppendText(sb, "        public {0} {1}", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
+                            AppendText(sb, "        public {0} {1}", new string[] { typename, name });
                             AppendText(sb, "        {", new string[0]);
                             AppendText(sb, "            get", new string[0]);
                             AppendText(sb, "            {", new string[0]);
@@ -138,6 +139,7 @@
                             AppendText(sb, "                _{0} = value;", new string[] { name });
                             AppendText(sb, "            }", new string[0]);
                             AppendText(sb, "        }", new string[0]);
+                            AppendText(sb, "#endregion", new string[0]);//添加换行
                         }
                     }
                     else
@@ -225,7 +227,7 @@ namespace {0}
 
 
 
-                builder.Append("\r\n\r\n    #region [    单个表枚举（带字段名和属性显示值）    ]\r\n");
+                builder.Append("\r\n    #region [    单个表枚举（带字段名和属性显示值）    ]\r\n");
                 foreach (KeyValuePair<string, string> pair2 in tables)
                 {
                     builder.Append(GetFiledEnum(pair2.Key, pair2.Value, config));
@@ -413,7 +415,7 @@ namespace {0}
             tableName_displayName = tableName_displayName == "" ? tableName : tableName_displayName;
 
 
-            builder.AppendFormat("    #region [    表名：{0}    \t\t备注名：{1}    ]\r\n", tableName, tableName_displayName);
+            builder.AppendFormat("    #region [    表名：{0}    \t\t备注名：{1}    ]\r\n", tableName.PadRight(40), tableName_displayName);
             builder.AppendFormat("    /// <summary>\r\n", string.Empty);
             builder.AppendFormat("    /// enum 表名：{0}\r\n", tableName_displayName);
             builder.AppendFormat("    /// </summary>\r\n", string.Empty);
