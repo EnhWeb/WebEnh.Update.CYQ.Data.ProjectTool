@@ -117,7 +117,7 @@
                             }
                             #endregion
 
-                            AppendText(sb, "#region [ public  {0} {1} {2} ]", new string[] { typename.PadRight(10), name.PadRight(30), Shorthand_Description });//添加换行
+                            AppendText(sb, "        #region [  public     {0} {1} {2}  ]", new string[] { typename.PadRight(15), name.PadRight(30), Shorthand_Description.PadRight(30) });//添加换行
 
                             AppendText(sb, "        /// <summary>", new string[0]);
                             AppendText(sb, "        /// 私有变量：{0}", new string[] { Longhand_Description });
@@ -139,7 +139,7 @@
                             AppendText(sb, "                _{0} = value;", new string[] { name });
                             AppendText(sb, "            }", new string[0]);
                             AppendText(sb, "        }", new string[0]);
-                            AppendText(sb, "#endregion", new string[0]);//添加换行
+                            AppendText(sb, "        #endregion", new string[0]);//添加换行
                         }
                     }
                     else
@@ -163,8 +163,9 @@
                         }
                     }
                 }
-                AppendText(sb, "    }", new string[0]);
-                AppendText(sb, "}", new string[0]);
+                sb.Append(
+@"    }
+}");
                 File.WriteAllText(config.ProjectPath.TrimEnd(new char[] { '/', '\\' }) + @"\" + str + ".cs", sb.ToString(), Encoding.UTF8);
             }
             catch (Exception exception)
@@ -197,14 +198,14 @@ namespace {0}
 ", str);//开始
 
 
-                builder.Append("    #region //    数据库中表名枚举 \r\n");
+                builder.Append($"    #region [    {dbName} 数据库中表名枚举    ]\r\n");
                 builder.AppendFormat("    /// <summary>\r\n");
                 builder.AppendFormat("    /// {0} 数据库中表集合枚举\r\n", dbName);
                 builder.AppendFormat("    /// </summary>\r\n");
                 //builder.AppendFormat("    [System.ComponentModel.DisplayName(\"{0}\")]",string.Empty);  //需自定义显示值的属性，暂未实现
                 builder.Append(
                                 config.MutilDatabase    //如果是选择了多数据库
-                                ? string.Format("    public enum {0}Enum\r\n    {{\r\n", dbName)          //如果是选择的多个数据库则返回这行
+                                ? string.Format("    public enum TableNames{0}Db\r\n    {{\r\n", dbName)          //如果是选择的多个数据库则返回这行
                                 : string.Format("    public enum TableNames\r\n    {{\r\n", string.Empty)  //如果选择的不是多个数据库则返回这行
                                 );
 
@@ -215,7 +216,7 @@ namespace {0}
                     strDisplayName = strDisplayName == "" ? pair.Key : strDisplayName;
 
                     builder.AppendFormat("        /// <summary>\r\n");
-                    builder.AppendFormat("        /// enum表名：{0}\r\n", strDisplayName);
+                    builder.AppendFormat("        /// enum 表名：{0}\r\n", strDisplayName);
                     builder.AppendFormat("        /// </summary>\r\n");
                     builder.AppendFormat("        [Display(Name = \"{0}\")]\r\n", strDisplayName);
                     builder.AppendFormat("        {0} ,\r\n\r\n", FormatKey(pair.Key));//表名
@@ -415,7 +416,7 @@ namespace {0}
             tableName_displayName = tableName_displayName == "" ? tableName : tableName_displayName;
 
 
-            builder.AppendFormat("    #region [    表名：{0}    \t\t备注名：{1}    ]\r\n", tableName.PadRight(40), tableName_displayName);
+            builder.AppendFormat("    #region [    表名：{0}    备注名：{1}    ]\r\n", tableName.PadRight(45), tableName_displayName.PadRight(30));
             builder.AppendFormat("    /// <summary>\r\n", string.Empty);
             builder.AppendFormat("    /// enum 表名：{0}\r\n", tableName_displayName);
             builder.AppendFormat("    /// </summary>\r\n", string.Empty);
