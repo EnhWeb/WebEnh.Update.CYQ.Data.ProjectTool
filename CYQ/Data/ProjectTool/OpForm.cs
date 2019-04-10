@@ -104,6 +104,8 @@
             }
             else
             {
+                this.btnBuild.Enabled = true;
+                this.btnBuild.Text = this.btnBuild.Tag.ToString();
                 MessageBox.Show("Fail！", "Tip");
             }
         }
