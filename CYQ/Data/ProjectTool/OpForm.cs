@@ -874,7 +874,7 @@
             this.Name = "OpForm";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "CYQ.Data 配置工具 V2.0     WebEnh.Update  内部版本号：V1.9（2019-04-12）";
+            this.Text = "CYQ.Data 配置工具 V2.1     WebEnh.Update  内部版本号：V1.9（2019-04-12）";
             this.Load += new System.EventHandler(this.OpForm_Load);
             this.gbConn.ResumeLayout(false);
             this.gbConn.PerformLayout();
