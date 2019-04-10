@@ -239,10 +239,10 @@ namespace {0}
 }");//结束
 
 
-                string str2 = "TableNames.cs";
+                string str2 = $"TableNames-{dbName}.cs";
                 if (config.MutilDatabase)//如果是选择的多个数据库则保存为单独文件
                 {
-                    str2 = dbName + "Enum.cs";
+                    str2 = $"TableNames-{dbName}DB.cs";
                 }
                 File.WriteAllText(config.ProjectPath.TrimEnd(new char[] { '/', '\\' }) + @"\" + str2, builder.ToString(), Encoding.UTF8);
             }
