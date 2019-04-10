@@ -157,7 +157,7 @@
                 }
                 AppendText(sb, "    }", new string[0]);
                 AppendText(sb, "}", new string[0]);
-                File.WriteAllText(config.ProjectPath.TrimEnd(new char[] { '/', '\\' }) + @"\" + str + ".cs", sb.ToString(), Encoding.Default);
+                File.WriteAllText(config.ProjectPath.TrimEnd(new char[] { '/', '\\' }) + @"\" + str + ".cs", sb.ToString(), Encoding.UTF8);
             }
             catch (Exception exception)
             {
@@ -180,12 +180,6 @@
                 StringBuilder builder = new StringBuilder(50000);
 
                 string str = string.Format(config.NameSpace, dbName).TrimEnd(new char[] { '.' });//得到命名空间名称
-
-
-
-
-
-
 
                 builder.AppendFormat(
                     @"using System;
@@ -241,7 +235,7 @@ namespace {0}
                 {
                     str2 = dbName + "Enum.cs";
                 }
-                File.WriteAllText(config.ProjectPath.TrimEnd(new char[] { '/', '\\' }) + @"\" + str2, builder.ToString(), Encoding.Default);
+                File.WriteAllText(config.ProjectPath.TrimEnd(new char[] { '/', '\\' }) + @"\" + str2, builder.ToString(), Encoding.UTF8);
             }
             catch (Exception exception)
             {
