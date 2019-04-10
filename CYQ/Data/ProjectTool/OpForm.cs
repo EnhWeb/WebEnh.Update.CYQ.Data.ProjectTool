@@ -61,6 +61,9 @@
         private TextBox textBox1;
         private TextBox txtProjectPath;
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public OpForm()
         {
             this.InitializeComponent();
@@ -267,6 +270,10 @@
             }
         }
 
+        /// <summary>
+        /// Dispose
+        /// </summary>
+        /// <param name="disposing"></param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (this.components != null))
@@ -1034,8 +1041,23 @@
             return str;
         }
 
+        /// <summary>
+        /// ShellExecute
+        /// </summary>
+        /// <param name="hwnd"></param>
+        /// <param name="lpOperation"></param>
+        /// <param name="lpFile"></param>
+        /// <param name="lpParameters"></param>
+        /// <param name="lpDirectory"></param>
+        /// <param name="nShowCmd"></param>
+        /// <returns></returns>
         [DllImport("shell32.dll")]
         private static extern IntPtr ShellExecute(IntPtr hwnd, string lpOperation, string lpFile, string lpParameters, string lpDirectory, int nShowCmd);
+
+        /// <summary>
+        /// 打开IE浏览器
+        /// </summary>
+        /// <param name="url"></param>
         protected static void StartHttp(string url)
         {
             try

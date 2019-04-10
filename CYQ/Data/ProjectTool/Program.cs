@@ -23,7 +23,9 @@
         [STAThread]
         private static void Main(string[] para)
         {
+#pragma warning disable CS0618 // 类型或成员已过时
             AppDomain.CurrentDomain.AppendPrivatePath(Application.StartupPath + @"\Libs\");
+#pragma warning restore CS0618 // 类型或成员已过时
 
             if (para.Length > 0)
             {

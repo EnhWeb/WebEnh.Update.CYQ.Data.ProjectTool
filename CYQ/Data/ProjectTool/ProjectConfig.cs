@@ -3,6 +3,9 @@
     using CYQ.Data.Orm;
     using System;
 
+    /// <summary>
+    /// ProjectConfig ORM 实体
+    /// </summary>
     public class ProjectConfig : OrmBase
     {
         private string _BuildMode;
@@ -19,11 +22,17 @@
         private string _ProjectPath;
         private bool _ValueTypeNullable;
 
+        /// <summary>
+        /// 构造函数
+        /// </summary>
         public ProjectConfig()
         {
             base.SetInit(this, "ProjectConfig", "Txt Path={0};ts=0");
         }
 
+        /// <summary>
+        /// 编译器模式
+        /// </summary>
         public string BuildMode
         {
             get
@@ -36,6 +45,9 @@
             }
         }
 
+        /// <summary>
+        /// 链接名称
+        /// </summary>
         public string Conn
         {
             get
@@ -48,6 +60,9 @@
             }
         }
 
+        /// <summary>
+        /// 数据库类别
+        /// </summary>
         public string DBType
         {
             get
@@ -60,6 +75,9 @@
             }
         }
 
+        /// <summary>
+        /// 实体后缀名称
+        /// </summary>
         public string EntitySuffix
         {
             get
@@ -72,6 +90,9 @@
             }
         }
 
+        /// <summary>
+        /// ForTwoOnly
+        /// </summary>
         public bool ForTwoOnly
         {
             get
@@ -84,6 +105,9 @@
             }
         }
 
+        /// <summary>
+        /// 主键ID
+        /// </summary>
         public int ID
         {
             get
@@ -96,6 +120,9 @@
             }
         }
 
+        /// <summary>
+        /// IsMain
+        /// </summary>
         public bool IsMain
         {
             get
@@ -108,6 +135,9 @@
             }
         }
 
+        /// <summary>
+        /// MapName
+        /// </summary>
         public bool MapName
         {
             get
@@ -120,6 +150,9 @@
             }
         }
 
+        /// <summary>
+        /// 是否多数据库
+        /// </summary>
         public bool MutilDatabase
         {
             get
@@ -132,6 +165,9 @@
             }
         }
 
+        /// <summary>
+        /// 名称
+        /// </summary>
         public string Name
         {
             get
@@ -144,6 +180,9 @@
             }
         }
 
+        /// <summary>
+        /// 命名空间名称
+        /// </summary>
         public string NameSpace
         {
             get
@@ -156,6 +195,9 @@
             }
         }
 
+        /// <summary>
+        /// 生成保存到的项目路径
+        /// </summary>
         public string ProjectPath
         {
             get
@@ -168,6 +210,9 @@
             }
         }
 
+        /// <summary>
+        /// 值类型是否可为空
+        /// </summary>
         public bool ValueTypeNullable
         {
             get

@@ -246,8 +246,7 @@ namespace {0}
         /// <summary>
         /// 创建
         /// </summary>
-        /// <param name="nameObj">配置名称</param>
-        /// <param name="tablenames">表名，如果为 all 则所有表，否则为：tablename1,tablename2,tablename3,</param>
+        /// <param name="KeyConnName_ValueTableNames">KeyConnName_ValueTableNames  (key 配置名称),(表名，如果为 all 则所有表，否则为：tablename1,tablename2,tablename3,)</param>
         internal static void Create(object KeyConnName_ValueTableNames)
         {
             int count = 0;
