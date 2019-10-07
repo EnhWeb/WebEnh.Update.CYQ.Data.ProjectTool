@@ -20,7 +20,6 @@
         private Button btnOpenFolder;
         private Button btnOpenProjectFolder;
         private Button btnTestConn;
-        private CheckBox chbForTwoOnly;
         private CheckBox chbMapName;
         private CheckBox chbMutilDatabase;
         private CheckBox chbValueTypeNullable;
@@ -59,6 +58,7 @@
         private LinkLabel linkLabel4;
         private Button button1;
         private TextBox textBox1;
+        private CheckBox chbForTwoOnly;
         private TextBox txtProjectPath;
 
         /// <summary>
@@ -384,7 +384,7 @@
             "Xml"});
             this.ddlDBType.Location = new System.Drawing.Point(104, 47);
             this.ddlDBType.Name = "ddlDBType";
-            this.ddlDBType.Size = new System.Drawing.Size(454, 20);
+            this.ddlDBType.Size = new System.Drawing.Size(593, 20);
             this.ddlDBType.TabIndex = 0;
             this.ddlDBType.SelectedIndexChanged += new System.EventHandler(this.ddlProvider_SelectedIndexChanged);
             // 
@@ -414,13 +414,13 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConn.Location = new System.Drawing.Point(104, 73);
             this.txtConn.Name = "txtConn";
-            this.txtConn.Size = new System.Drawing.Size(603, 21);
+            this.txtConn.Size = new System.Drawing.Size(742, 21);
             this.txtConn.TabIndex = 2;
             // 
             // btnTestConn
             // 
             this.btnTestConn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestConn.Location = new System.Drawing.Point(574, 20);
+            this.btnTestConn.Location = new System.Drawing.Point(713, 20);
             this.btnTestConn.Name = "btnTestConn";
             this.btnTestConn.Size = new System.Drawing.Size(133, 47);
             this.btnTestConn.TabIndex = 3;
@@ -435,7 +435,7 @@
             this.ddlName.FormattingEnabled = true;
             this.ddlName.Location = new System.Drawing.Point(104, 21);
             this.ddlName.Name = "ddlName";
-            this.ddlName.Size = new System.Drawing.Size(454, 20);
+            this.ddlName.Size = new System.Drawing.Size(593, 20);
             this.ddlName.TabIndex = 0;
             this.ddlName.SelectedIndexChanged += new System.EventHandler(this.ddlName_SelectedIndexChanged);
             // 
@@ -455,7 +455,7 @@
             this.chbMutilDatabase.AutoSize = true;
             this.chbMutilDatabase.Checked = true;
             this.chbMutilDatabase.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbMutilDatabase.Location = new System.Drawing.Point(520, 24);
+            this.chbMutilDatabase.Location = new System.Drawing.Point(659, 24);
             this.chbMutilDatabase.Name = "chbMutilDatabase";
             this.chbMutilDatabase.Size = new System.Drawing.Size(120, 16);
             this.chbMutilDatabase.TabIndex = 4;
@@ -478,7 +478,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtProjectPath.Location = new System.Drawing.Point(104, 119);
             this.txtProjectPath.Name = "txtProjectPath";
-            this.txtProjectPath.Size = new System.Drawing.Size(507, 21);
+            this.txtProjectPath.Size = new System.Drawing.Size(646, 21);
             this.txtProjectPath.TabIndex = 2;
             this.toolTip1.SetToolTip(this.txtProjectPath, "配围起到项目对应存放路径，以自动进行替换");
             // 
@@ -495,7 +495,7 @@
             this.gbConn.Controls.Add(this.lbConn);
             this.gbConn.Location = new System.Drawing.Point(4, 12);
             this.gbConn.Name = "gbConn";
-            this.gbConn.Size = new System.Drawing.Size(718, 100);
+            this.gbConn.Size = new System.Drawing.Size(857, 100);
             this.gbConn.TabIndex = 5;
             this.gbConn.TabStop = false;
             this.gbConn.Text = "数据库 链接配置";
@@ -522,7 +522,7 @@
             this.gbBuild.Controls.Add(this.lbCodeMode);
             this.gbBuild.Location = new System.Drawing.Point(4, 118);
             this.gbBuild.Name = "gbBuild";
-            this.gbBuild.Size = new System.Drawing.Size(718, 150);
+            this.gbBuild.Size = new System.Drawing.Size(857, 150);
             this.gbBuild.TabIndex = 6;
             this.gbBuild.TabStop = false;
             this.gbBuild.Text = "生成代码配置";
@@ -534,7 +534,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtEntitySuffix.Location = new System.Drawing.Point(104, 50);
             this.txtEntitySuffix.Name = "txtEntitySuffix";
-            this.txtEntitySuffix.Size = new System.Drawing.Size(298, 21);
+            this.txtEntitySuffix.Size = new System.Drawing.Size(437, 21);
             this.txtEntitySuffix.TabIndex = 11;
             this.txtEntitySuffix.Text = "Bean";
             // 
@@ -552,7 +552,7 @@
             // 
             this.lbForDbName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.lbForDbName.AutoSize = true;
-            this.lbForDbName.Location = new System.Drawing.Point(515, 88);
+            this.lbForDbName.Location = new System.Drawing.Point(654, 88);
             this.lbForDbName.Name = "lbForDbName";
             this.lbForDbName.Size = new System.Drawing.Size(125, 12);
             this.lbForDbName.TabIndex = 9;
@@ -564,7 +564,7 @@
             this.chbMapName.AutoSize = true;
             this.chbMapName.Checked = true;
             this.chbMapName.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbMapName.Location = new System.Drawing.Point(612, 55);
+            this.chbMapName.Location = new System.Drawing.Point(751, 55);
             this.chbMapName.Name = "chbMapName";
             this.chbMapName.Size = new System.Drawing.Size(102, 16);
             this.chbMapName.TabIndex = 8;
@@ -579,7 +579,7 @@
             this.chbForTwoOnly.AutoSize = true;
             this.chbForTwoOnly.Checked = true;
             this.chbForTwoOnly.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.chbForTwoOnly.Location = new System.Drawing.Point(519, 55);
+            this.chbForTwoOnly.Location = new System.Drawing.Point(658, 55);
             this.chbForTwoOnly.Name = "chbForTwoOnly";
             this.chbForTwoOnly.Size = new System.Drawing.Size(84, 16);
             this.chbForTwoOnly.TabIndex = 8;
@@ -591,7 +591,7 @@
             // 
             this.chbValueTypeNullable.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.chbValueTypeNullable.AutoSize = true;
-            this.chbValueTypeNullable.Location = new System.Drawing.Point(408, 55);
+            this.chbValueTypeNullable.Location = new System.Drawing.Point(547, 55);
             this.chbValueTypeNullable.Name = "chbValueTypeNullable";
             this.chbValueTypeNullable.Size = new System.Drawing.Size(96, 16);
             this.chbValueTypeNullable.TabIndex = 8;
@@ -602,7 +602,7 @@
             // btnOpenProjectFolder
             // 
             this.btnOpenProjectFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenProjectFolder.Location = new System.Drawing.Point(667, 118);
+            this.btnOpenProjectFolder.Location = new System.Drawing.Point(806, 118);
             this.btnOpenProjectFolder.Name = "btnOpenProjectFolder";
             this.btnOpenProjectFolder.Size = new System.Drawing.Size(45, 23);
             this.btnOpenProjectFolder.TabIndex = 7;
@@ -616,14 +616,14 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtNameSpace.Location = new System.Drawing.Point(104, 85);
             this.txtNameSpace.Name = "txtNameSpace";
-            this.txtNameSpace.Size = new System.Drawing.Size(400, 21);
+            this.txtNameSpace.Size = new System.Drawing.Size(539, 21);
             this.txtNameSpace.TabIndex = 2;
             this.txtNameSpace.Text = "Web.Enums.{0}";
             // 
             // btnOpenFolder
             // 
             this.btnOpenFolder.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnOpenFolder.Location = new System.Drawing.Point(618, 119);
+            this.btnOpenFolder.Location = new System.Drawing.Point(757, 119);
             this.btnOpenFolder.Name = "btnOpenFolder";
             this.btnOpenFolder.Size = new System.Drawing.Size(42, 23);
             this.btnOpenFolder.TabIndex = 6;
@@ -653,7 +653,7 @@
             "纯实体类"});
             this.ddlBuildMode.Location = new System.Drawing.Point(104, 20);
             this.ddlBuildMode.Name = "ddlBuildMode";
-            this.ddlBuildMode.Size = new System.Drawing.Size(400, 20);
+            this.ddlBuildMode.Size = new System.Drawing.Size(539, 20);
             this.ddlBuildMode.TabIndex = 0;
             this.ddlBuildMode.SelectedIndexChanged += new System.EventHandler(this.ddlBuildMode_SelectedIndexChanged);
             // 
@@ -673,7 +673,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.btnBuild.Location = new System.Drawing.Point(15, 492);
             this.btnBuild.Name = "btnBuild";
-            this.btnBuild.Size = new System.Drawing.Size(696, 38);
+            this.btnBuild.Size = new System.Drawing.Size(835, 38);
             this.btnBuild.TabIndex = 5;
             this.btnBuild.Tag = "生成文件";
             this.btnBuild.Text = "生成文件";
@@ -686,7 +686,7 @@
             this.lnkGotoUrl.AutoSize = true;
             this.lnkGotoUrl.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkGotoUrl.LinkColor = System.Drawing.Color.Red;
-            this.lnkGotoUrl.Location = new System.Drawing.Point(637, 544);
+            this.lnkGotoUrl.Location = new System.Drawing.Point(776, 544);
             this.lnkGotoUrl.Name = "lnkGotoUrl";
             this.lnkGotoUrl.Size = new System.Drawing.Size(77, 12);
             this.lnkGotoUrl.TabIndex = 7;
@@ -700,7 +700,7 @@
             this.lnkOpenFolder.AutoSize = true;
             this.lnkOpenFolder.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkOpenFolder.LinkColor = System.Drawing.Color.Blue;
-            this.lnkOpenFolder.Location = new System.Drawing.Point(554, 544);
+            this.lnkOpenFolder.Location = new System.Drawing.Point(693, 544);
             this.lnkOpenFolder.Name = "lnkOpenFolder";
             this.lnkOpenFolder.Size = new System.Drawing.Size(77, 12);
             this.lnkOpenFolder.TabIndex = 7;
@@ -714,7 +714,7 @@
             this.lnkCopyPath.AutoSize = true;
             this.lnkCopyPath.LinkBehavior = System.Windows.Forms.LinkBehavior.NeverUnderline;
             this.lnkCopyPath.LinkColor = System.Drawing.Color.BlueViolet;
-            this.lnkCopyPath.Location = new System.Drawing.Point(469, 544);
+            this.lnkCopyPath.Location = new System.Drawing.Point(608, 544);
             this.lnkCopyPath.Name = "lnkCopyPath";
             this.lnkCopyPath.Size = new System.Drawing.Size(77, 12);
             this.lnkCopyPath.TabIndex = 8;
@@ -755,7 +755,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Location = new System.Drawing.Point(-8, 535);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(747, 1);
+            this.groupBox1.Size = new System.Drawing.Size(886, 1);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -769,7 +769,7 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(4, 274);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(718, 212);
+            this.groupBox2.Size = new System.Drawing.Size(857, 212);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "表选择";
@@ -780,7 +780,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 55);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(712, 154);
+            this.panel2.Size = new System.Drawing.Size(851, 154);
             this.panel2.TabIndex = 2;
             // 
             // listView1
@@ -799,7 +799,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
             this.listView1.ShowGroups = false;
-            this.listView1.Size = new System.Drawing.Size(712, 154);
+            this.listView1.Size = new System.Drawing.Size(851, 154);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -807,12 +807,12 @@
             // columnHeader1
             // 
             this.columnHeader1.Text = "表名称";
-            this.columnHeader1.Width = 300;
+            this.columnHeader1.Width = 310;
             // 
             // columnHeader2
             // 
             this.columnHeader2.Text = "表描述";
-            this.columnHeader2.Width = 370;
+            this.columnHeader2.Width = 507;
             // 
             // panel1
             // 
@@ -824,7 +824,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel1.Location = new System.Drawing.Point(3, 17);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(712, 38);
+            this.panel1.Size = new System.Drawing.Size(851, 38);
             this.panel1.TabIndex = 1;
             // 
             // button1
@@ -841,7 +841,7 @@
             // 
             this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(661, 12);
+            this.linkLabel4.Location = new System.Drawing.Point(800, 12);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(29, 12);
             this.linkLabel4.TabIndex = 2;
@@ -853,7 +853,7 @@
             // 
             this.linkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(614, 12);
+            this.linkLabel3.Location = new System.Drawing.Point(753, 12);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(41, 12);
             this.linkLabel3.TabIndex = 1;
@@ -865,7 +865,7 @@
             // 
             this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(579, 12);
+            this.linkLabel2.Location = new System.Drawing.Point(718, 12);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(29, 12);
             this.linkLabel2.TabIndex = 0;
@@ -877,7 +877,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(726, 565);
+            this.ClientSize = new System.Drawing.Size(865, 565);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lnkCopyPath);
@@ -980,7 +980,7 @@
         private void OpForm_Load(object sender, EventArgs e)
         {
             //版本号自动生成
-            this.Text = $"CYQ.Data 配置工具 V2.0  -  WebEnh.Update 枚举实体生成工具 InsideVersion：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}（2017-06-23）";
+            this.Text = $"CYQ.Data 配置工具 V2.0  -  WebEnh.Update 枚举实体生成工具 InsideVersion：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}（2019-10-07）";
             //CYQ.Data 配置工具 V2.0     WebEnh.Update  内部版本号：V1.9（2017-06-23）
 
             this.isIniting = true;
