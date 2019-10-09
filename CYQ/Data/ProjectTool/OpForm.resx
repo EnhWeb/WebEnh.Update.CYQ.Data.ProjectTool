@@ -117,10 +117,113 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <metadata name="toolTip1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+  <metadata name="toolTipController1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
     <value>17, 17</value>
   </metadata>
   <assembly alias="System.Drawing" name="System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
+  <data name="resource.Image" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAIXRFWHRUaXRsZQBEb2N1bWVu
+        dGF0aW9uO0hlbHA7UXVlc3Rpb27gk8yYAAAB/0lEQVRYR8WXPW4CMRBGyS0iqvRpOAIXiERJmTLHQKkj
+        aNNxhLQpkDhBhHICuEFKys281Q4am/F6FhJRPNj1fvPD2jM2o6Zpbkr78fT6GWEszIWlsBEOwrGDa8Z4
+        hgat5yMhmsCjsBC+hSYIWmyw9Xy21BK4E16EL8ELEgFbfODrLEZfAvfCm+A5vQR84TOJU0oA4bvgOboG
+        fCZJeAnwqmq/fC+shGdh2jHrxnjm2Sj4Pk2HlwDz5RkqC/R9iGad2eQQw02AFVtbcFMbrIToPjI7CzHa
+        6kCrBkDZeAaWUwJy/cA93zpmnk0Ez14hVqtVAxpHpM4JyNzncz2zCXQ+7fMcYo3RqZju5Qlzds4YbG3w
+        zqens8zRqZgW6omirLPgtSmApU2APu6JIvwIyTqQ+8h62tgE2Ew8UQ2CT7LgkV8PB5sAO5on6qMUnHFP
+        n3O8NoGkJ8g91eHpSiQJDJ2CfRac8vR0fSRTMHQRJmUn932dr0SyCIeW4e4PEkjKMNqILFtDbRf0SBpR
+        tBXn0BlJwHvWx1krhkjzUJIS5Lob87QeZ5sRRLZjZaXBFcYyTYnidgy1A4lyTQLFAwlEjmRw6RRUj2Qw
+        5FA6ZBGGDqUKwsibiIKvJDj0JQC8KuYrujA9sMXH6bVbagkorFjKZkifQItNu9pLRBNQ/u/P6e1oRr9r
+        45MhjFsT6wAAAABJRU5ErkJggg==
+</value>
+  </data>
+  <data name="toolTipItem1.Text" xml:space="preserve">
+    <value>###--------------------------------------------------------###
+
+    Txt::  Txt Path=E:\
+    Xml::  Xml Path=E:\
+Access::  Provider=Microsoft.Jet.OLEDB.4.0; Data Source=E:\cyqdata.mdb
+  Sqlite::  Data Source=E:\cyqdata.db;failifmissing=false;
+  MySql::  host=localhost;port=3306;database=cyqdata;uid=root;pwd=123456;Convert Zero Datetime=True;
+   Mssql::  server=.;database=cyqdata;uid=sa;pwd=123456; 
+ Sybase::  data source=127.0.0.1;port=5000;database=cyqdata;uid=sa;pwd=123456;
+
+Oracle OracleClient:: 
+Provider=MSDAORA;Data Source=orcl;User ID=sa;Password=123456
+Provider=MSDAORA;Data Source=ip\orcl;User ID=sa;Password=123456
+
+Oracle ODP.NET::
+Data Source=(DESCRIPTION=(ADDRESS_LIST=(ADDRESS=(PROTOCOL=TCP)(HOST=127.0.0.1)(PORT = 1521)))(CONNECT_DATA =(SID = orcl)));User ID=sa;password=123456
+
+###--------------------------------------------------------###
+
+中文说明：
+1：{0} 代表根目录
+2：sqlite、MySql、Sybase 都需要将对应的dll放到和cyq.data.dll同一目录。
+相关的dll下载：http://www.cyqdata.com/download/article-detail-426
+3：oracle 时：
+A：默认OracleClient引的是64位的，如果是32位的，需要自己从源码移除重新引用32位的。
+B：用odp.net 的Oracle.DataAccess 需要自己下载安装，将把Oracle.DataAccess.dll放到和同一目录下。
+C：用Oracle.ManagedDataAccess放到同一目录下即可以使用。
+
+Explanation:
+1: {0} represents the root directory
+2: sqlite, MySql, Sybase needs to put the corresponding dll and cyq.data.dll same directory.
+Related dll download: http: //www.cyqdata.com/download/article-detail-426
+3: oracle when:
+A: The default OracleClient lead is 64, if it is 32, you need to remove yourself from the re-introduction of 32-bit source.
+B: with odp.net of Oracle.DataAccess need to download to install, and will Oracle.DataAccess.dll into the same directory.
+C: with Oracle.ManagedDataAccess into the same directory that is available.</value>
+  </data>
+  <data name="resource.Image1" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        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
+</value>
+  </data>
+  <data name="resource.Image2" type="System.Drawing.Bitmap, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+    <value>
+        iVBORw0KGgoAAAANSUhEUgAAACAAAAAgCAYAAABzenr0AAAAAXNSR0IArs4c6QAAAARnQU1BAACxjwv8
+        YQUAAAAZdEVYdFNvZnR3YXJlAEFkb2JlIEltYWdlUmVhZHlxyWU8AAAAJXRFWHRUaXRsZQBDIztDU2hh
+        cnA7Q29kZTtMYW5ndWFnZTtQcm9ncmFt2OFKBgAAAc5JREFUWEfFlVttw0AQRQMhEAIhEEKgUiAEQhlE
+        KoFCKIT89i8QAqEQCsG9x/K1Zu3Z1Hl0+3Ekz/U89jEer7qu+1dSsSWp2JJUbEkqtiQVH+Xl7fMoOnEI
+        2nnQNtF3fHgmKnIaim2D9g3RDwrjWajQFwsI9gZbnK2ZwriGgtdiF1hX/GbF9LwftGP0hcKYogCKcp/9
+        jhLQSU5R/OBD8O4SNN8/V9NrrjErauS0FbXCERIeJtpvXFxnVhjkwBHHABroXbBbXwGFvUtOwDoaMSzK
+        mnPYHpszK04ynF2cY0vvG6bvZC9uQJgJcvQdVoNqyJ+eKeL0XG1AKAw5OYEphkYN+dFk4OPnFKy5j6I2
+        5p0m8n3Bot3Lj2Z1zCJi/DQZDWXH9MiuoRh2R+y4w8GeTUBTGHJ8dAHFuNWzT+cU/SKFIce7FyD/bAJ6
+        PlRzFYYc3bFFoiWE2LGYnpkdaLvoGykMOXoXZtFXAEMsTRzvnytAq86RmSBnNxLcdAr3MBNUNH6K/SJE
+        ehLoYp+9W0oqKmn2c2EhNClwtx46N38tkVQEJWYR8Z9Q428WAErOaH4VsS+AscpPikVWG2wJqdiSVGxJ
+        KrYkFVuSii1JxXZ0qx9DnjShpApz5wAAAABJRU5ErkJggg==
+</value>
+  </data>
   <data name="$this.Icon" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
     <value>
         AAABAAEAgIAAAAEAIAAoCAEAFgAAACgAAACAAAAAAAEAAAEAIAAAAAAAAAABABMLAAATCwAAAAAAAAAA
