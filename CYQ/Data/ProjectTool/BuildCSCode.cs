@@ -46,7 +46,12 @@
                 string str2 = string.Format(config.NameSpace, dbName+"DB").TrimEnd(new char[] { '.' });
                 AppendText(sb, "using System;", new string[0]);
                 AppendText(sb, "using System.ComponentModel.DataAnnotations;", new string[0]);
-                AppendText(sb, "using System.ComponentModel;\r\n", new string[0]);
+                AppendText(sb, "using System.ComponentModel;", new string[0]);
+                if (!config.ForTwoOnly)
+                {
+                    AppendText(sb, "using System.ComponentModel.DataAnnotations.Schema;", new string[0]);
+                }
+                AppendText(sb, "", new string[0]);
                 AppendText(sb, "namespace {0}", new string[] { str2 });
                 AppendText(sb, "{", new string[0]);
 
@@ -58,7 +63,11 @@
                     AppendText(sb, "    /// </summary>", new string[0]);
                     AppendText(sb, "    [DisplayName(\"{0}\")]", new string[] { description });//实体表名的指定方法不是这样操作的，需更新，有空再更新
                 }
-                AppendText(sb, "    public class {0} {1}", new string[] { str + config.EntitySuffix, flag ? "" : ": CYQ.Data.Orm.OrmBase" });
+                if (!config.ForTwoOnly)
+                {
+                    AppendText(sb, "    [Table(\"{0}\")]", str);
+                }
+                AppendText(sb, "    public class {0}{1}", new string[] { str + config.EntitySuffix, flag ? "" : " : CYQ.Data.Orm.OrmBase" });
                 AppendText(sb, "    {", new string[0]);
                 if (!flag)//如果是ORM，则进行下面的生成
                 {
@@ -73,7 +82,7 @@
                     string name = string.Empty;
                     Type type = null;
                     
-                    if (config.ForTwoOnly)
+                    if (config.ForTwoOnly) // vs2015 模式
                     {
                         foreach (MCellStruct struct2 in columns)
                         {
@@ -142,7 +151,7 @@
                             AppendText(sb, "        #endregion", new string[0]);//添加换行
                         }
                     }
-                    else
+                    else // 新模式
                     {
                         foreach (MCellStruct struct3 in columns)
                         {
@@ -192,6 +201,10 @@
                                 AppendText(sb, "        /// {0}", new string[] { Longhand_Description });
                                 AppendText(sb, "        /// </summary>", new string[0]);
                                 AppendText(sb, "        [Display(Name = \"{0}\")]", new string[] { Shorthand_Description });
+                            }
+                            if (name.ToUpper() == "ID")
+                            {
+                                AppendText(sb, "        [DataObjectField(true)]");
                             }
                             AppendText(sb, "        public {0} {1} {{ get; set; }}", new string[] { FormatType(type.Name, type.IsValueType, config.ValueTypeNullable), name });
                             AppendText(sb,"");
@@ -421,6 +434,14 @@ namespace {0}
                     else if (str == "Boolean")
                     {
                         tName = "bool";
+                    }
+                    else if (str == "Int64")
+                    {
+                        tName = "long";
+                    }
+                    else if (str == "Int16")
+                    {
+                        tName = "short";
                     }
                 }
                 else
