@@ -183,9 +183,20 @@
 
         private void BuildCSCode_OnCreateEnd(int count)
         {
-            this.btnBuild.Text = this.btnBuild.Tag.ToString();
-            this.btnBuild.Enabled = true;
-            MessageBox.Show("OK，Total : " + count + " tables", "Tip");
+            if (this.btnBuild.Visible)
+            {
+                this.btnBuild.Text = this.btnBuild.Tag.ToString();
+                this.btnBuild.Enabled = true;
+            }
+            else
+            {
+                this.simpleButton1.Text = this.simpleButton1.Tag.ToString();
+                this.simpleButton1.Enabled = true;
+            }
+
+            this.Activate();
+            
+            MessageBox.Show("OK，Total : " + count + " tables", "Tip", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1,MessageBoxOptions.DefaultDesktopOnly);
         }
 
         private void ddlBuildMode_SelectedIndexChanged(object sender, EventArgs e)

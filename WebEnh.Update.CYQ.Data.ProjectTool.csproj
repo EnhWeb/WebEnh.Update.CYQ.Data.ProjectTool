@@ -161,6 +161,7 @@
     <EmbeddedResource Include="CYQ\Data\ProjectTool\OpForm.resx">
       <DependentUpon>OpForm.cs</DependentUpon>
     </EmbeddedResource>
+    <None Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
