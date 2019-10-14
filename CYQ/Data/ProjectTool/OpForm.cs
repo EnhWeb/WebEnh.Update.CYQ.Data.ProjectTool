@@ -1141,7 +1141,7 @@
         {
 
             //版本号自动生成
-            this.Text = $"CYQ.Data 配置工具 V2.0  -  WebEnh.Update 枚举实体生成工具 InsideVersion：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}（2019-10-07）";
+            this.Text = $"CYQ.Data 配置工具 V2.0  -  WebEnh.Update 枚举实体生成工具 InsideVersion：{System.Reflection.Assembly.GetExecutingAssembly().GetName().Version}（2019-10-14）";
             //CYQ.Data 配置工具 V2.0     WebEnh.Update  内部版本号：V1.9（2017-06-23）
 
             this.isIniting = true;
