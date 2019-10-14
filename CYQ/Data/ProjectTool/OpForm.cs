@@ -10,6 +10,7 @@
     using System.Runtime.InteropServices;
     using System.Threading;
     using System.Windows.Forms;
+    using System.Linq;
 
     /// <summary>
     /// OpForm
@@ -66,6 +67,7 @@
         private DevExpress.XtraBars.Navigation.TabNavigationPage tabNavigationPage2;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
         private DevExpress.Utils.ToolTipController toolTipController1;
+        private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private TextBox txtProjectPath;
 
         /// <summary>
@@ -196,7 +198,7 @@
 
             this.Activate();
             
-            MessageBox.Show("OK，Total : " + count + " tables", "Tip", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1,MessageBoxOptions.DefaultDesktopOnly);
+            MessageBox.Show(this,"OK，Total : " + count + " tables", "Tip", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
 
         private void ddlBuildMode_SelectedIndexChanged(object sender, EventArgs e)
@@ -386,18 +388,19 @@
             this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.panel1 = new System.Windows.Forms.Panel();
-            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
-            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.button1 = new System.Windows.Forms.Button();
             this.linkLabel4 = new System.Windows.Forms.LinkLabel();
             this.linkLabel3 = new System.Windows.Forms.LinkLabel();
             this.linkLabel2 = new System.Windows.Forms.LinkLabel();
+            this.ribbonControl1 = new DevExpress.XtraBars.Ribbon.RibbonControl();
+            this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
             this.ribbonPage1 = new DevExpress.XtraBars.Ribbon.RibbonPage();
             this.ribbonPageGroup1 = new DevExpress.XtraBars.Ribbon.RibbonPageGroup();
             this.tabPane1 = new DevExpress.XtraBars.Navigation.TabPane();
             this.tabNavigationPage1 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.tabNavigationPage2 = new DevExpress.XtraBars.Navigation.TabNavigationPage();
             this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
+            this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.gbConn.SuspendLayout();
             this.gbBuild.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -427,7 +430,7 @@
             "Xml"});
             this.ddlDBType.Location = new System.Drawing.Point(121, 55);
             this.ddlDBType.Name = "ddlDBType";
-            this.ddlDBType.Size = new System.Drawing.Size(696, 22);
+            this.ddlDBType.Size = new System.Drawing.Size(723, 22);
             this.ddlDBType.TabIndex = 0;
             this.ddlDBType.SelectedIndexChanged += new System.EventHandler(this.ddlProvider_SelectedIndexChanged);
             // 
@@ -471,11 +474,11 @@
             // btnTestConn
             // 
             this.btnTestConn.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTestConn.Location = new System.Drawing.Point(837, 23);
+            this.btnTestConn.Location = new System.Drawing.Point(850, 24);
             this.btnTestConn.Name = "btnTestConn";
-            this.btnTestConn.Size = new System.Drawing.Size(155, 55);
+            this.btnTestConn.Size = new System.Drawing.Size(64, 53);
             this.btnTestConn.TabIndex = 3;
-            this.btnTestConn.Text = "测试链接";
+            this.btnTestConn.Text = "测试\r\n链接";
             this.btnTestConn.UseVisualStyleBackColor = true;
             this.btnTestConn.Click += new System.EventHandler(this.btnTestConn_Click);
             // 
@@ -486,7 +489,7 @@
             this.ddlName.FormattingEnabled = true;
             this.ddlName.Location = new System.Drawing.Point(121, 24);
             this.ddlName.Name = "ddlName";
-            this.ddlName.Size = new System.Drawing.Size(696, 22);
+            this.ddlName.Size = new System.Drawing.Size(723, 22);
             this.ddlName.TabIndex = 0;
             this.ddlName.SelectedIndexChanged += new System.EventHandler(this.ddlName_SelectedIndexChanged);
             // 
@@ -536,6 +539,7 @@
             // 
             this.gbConn.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.gbConn.Controls.Add(this.simpleButton2);
             this.gbConn.Controls.Add(this.txtConn);
             this.gbConn.Controls.Add(this.ddlDBType);
             this.gbConn.Controls.Add(this.btnTestConn);
@@ -720,7 +724,7 @@
             // 
             this.btnBuild.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnBuild.Location = new System.Drawing.Point(6, 521);
+            this.btnBuild.Location = new System.Drawing.Point(6, 519);
             this.btnBuild.Name = "btnBuild";
             this.btnBuild.Size = new System.Drawing.Size(1005, 44);
             this.btnBuild.TabIndex = 5;
@@ -817,7 +821,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Location = new System.Drawing.Point(-9, 637);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1039, 1);
+            this.groupBox1.Size = new System.Drawing.Size(1039, 10);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "groupBox1";
@@ -831,7 +835,7 @@
             this.groupBox2.Controls.Add(this.panel1);
             this.groupBox2.Location = new System.Drawing.Point(6, 311);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(1005, 204);
+            this.groupBox2.Size = new System.Drawing.Size(1005, 201);
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "表选择";
@@ -842,7 +846,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 62);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(999, 139);
+            this.panel2.Size = new System.Drawing.Size(999, 136);
             this.panel2.TabIndex = 2;
             // 
             // listView1
@@ -861,7 +865,7 @@
             this.listView1.Location = new System.Drawing.Point(0, 0);
             this.listView1.Name = "listView1";
             this.listView1.ShowGroups = false;
-            this.listView1.Size = new System.Drawing.Size(999, 139);
+            this.listView1.Size = new System.Drawing.Size(999, 136);
             this.listView1.TabIndex = 0;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.Details;
@@ -888,41 +892,6 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(999, 44);
             this.panel1.TabIndex = 1;
-            // 
-            // ribbonControl1
-            // 
-            this.ribbonControl1.ExpandCollapseItem.Id = 0;
-            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
-            this.ribbonControl1.ExpandCollapseItem,
-            this.ribbonControl1.SearchEditItem});
-            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
-            this.ribbonControl1.MaxItemId = 1;
-            this.ribbonControl1.Name = "ribbonControl1";
-            this.ribbonControl1.Size = new System.Drawing.Size(1014, 50);
-            this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above;
-            // 
-            // simpleButton1
-            // 
-            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.simpleButton1.Location = new System.Drawing.Point(6, 521);
-            this.simpleButton1.Name = "simpleButton1";
-            this.simpleButton1.Size = new System.Drawing.Size(1005, 44);
-            toolTipTitleItem4.Text = "实体或枚举生成说明";
-            toolTipItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
-            toolTipItem3.LeftIndent = 6;
-            toolTipItem3.Text = "C#代码文件生成会在后台运行，生成成功后会弹出提示消息。";
-            toolTipTitleItem5.LeftIndent = 6;
-            toolTipTitleItem5.Text = "多线程运行";
-            superToolTip3.Items.Add(toolTipTitleItem4);
-            superToolTip3.Items.Add(toolTipItem3);
-            superToolTip3.Items.Add(toolTipSeparatorItem2);
-            superToolTip3.Items.Add(toolTipTitleItem5);
-            this.simpleButton1.SuperTip = superToolTip3;
-            this.simpleButton1.TabIndex = 5;
-            this.simpleButton1.Tag = "生成文件";
-            this.simpleButton1.Text = "生成文件";
-            this.simpleButton1.Click += new System.EventHandler(this.btnBuild_Click);
             // 
             // button1
             // 
@@ -970,6 +939,42 @@
             this.linkLabel2.Text = "全选";
             this.linkLabel2.LinkClicked += new System.Windows.Forms.LinkLabelLinkClickedEventHandler(this.linkLabel2_LinkClicked);
             // 
+            // ribbonControl1
+            // 
+            this.ribbonControl1.ExpandCollapseItem.Id = 0;
+            this.ribbonControl1.Items.AddRange(new DevExpress.XtraBars.BarItem[] {
+            this.ribbonControl1.ExpandCollapseItem,
+            this.ribbonControl1.SearchEditItem});
+            this.ribbonControl1.Location = new System.Drawing.Point(0, 0);
+            this.ribbonControl1.MaxItemId = 1;
+            this.ribbonControl1.Name = "ribbonControl1";
+            this.ribbonControl1.Size = new System.Drawing.Size(1014, 62);
+            this.ribbonControl1.ToolbarLocation = DevExpress.XtraBars.Ribbon.RibbonQuickAccessToolbarLocation.Above;
+            // 
+            // simpleButton1
+            // 
+            this.simpleButton1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.simpleButton1.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton1.ImageOptions.SvgImage")));
+            this.simpleButton1.Location = new System.Drawing.Point(6, 518);
+            this.simpleButton1.Name = "simpleButton1";
+            this.simpleButton1.Size = new System.Drawing.Size(1005, 44);
+            toolTipTitleItem4.Text = "实体或枚举生成说明";
+            toolTipItem3.ImageOptions.Image = ((System.Drawing.Image)(resources.GetObject("resource.Image2")));
+            toolTipItem3.LeftIndent = 6;
+            toolTipItem3.Text = "C#代码文件生成会在后台运行，生成成功后会弹出提示消息。";
+            toolTipTitleItem5.LeftIndent = 6;
+            toolTipTitleItem5.Text = "多线程运行";
+            superToolTip3.Items.Add(toolTipTitleItem4);
+            superToolTip3.Items.Add(toolTipItem3);
+            superToolTip3.Items.Add(toolTipSeparatorItem2);
+            superToolTip3.Items.Add(toolTipTitleItem5);
+            this.simpleButton1.SuperTip = superToolTip3;
+            this.simpleButton1.TabIndex = 5;
+            this.simpleButton1.Tag = "生成文件";
+            this.simpleButton1.Text = "生成文件";
+            this.simpleButton1.Click += new System.EventHandler(this.btnBuild_Click);
+            // 
             // ribbonPage1
             // 
             this.ribbonPage1.Name = "ribbonPage1";
@@ -993,9 +998,9 @@
             this.tabPane1.Pages.AddRange(new DevExpress.XtraBars.Navigation.NavigationPageBase[] {
             this.tabNavigationPage1,
             this.tabNavigationPage2});
-            this.tabPane1.RegularSize = new System.Drawing.Size(1014, 596);
+            this.tabPane1.RegularSize = new System.Drawing.Size(1014, 604);
             this.tabPane1.SelectedPage = this.tabNavigationPage1;
-            this.tabPane1.Size = new System.Drawing.Size(1014, 596);
+            this.tabPane1.Size = new System.Drawing.Size(1014, 604);
             this.tabPane1.TabIndex = 12;
             this.tabPane1.Text = "tabPane1";
             // 
@@ -1008,13 +1013,23 @@
             this.tabNavigationPage1.Controls.Add(this.gbBuild);
             this.tabNavigationPage1.Controls.Add(this.btnBuild);
             this.tabNavigationPage1.Name = "tabNavigationPage1";
-            this.tabNavigationPage1.Size = new System.Drawing.Size(1014, 568);
+            this.tabNavigationPage1.Size = new System.Drawing.Size(1014, 566);
             // 
             // tabNavigationPage2
             // 
             this.tabNavigationPage2.Caption = "其它工具";
             this.tabNavigationPage2.Name = "tabNavigationPage2";
             this.tabNavigationPage2.Size = new System.Drawing.Size(1014, 568);
+            // 
+            // simpleButton2
+            // 
+            this.simpleButton2.ImageOptions.SvgImage = ((DevExpress.Utils.Svg.SvgImage)(resources.GetObject("simpleButton2.ImageOptions.SvgImage")));
+            this.simpleButton2.Location = new System.Drawing.Point(920, 24);
+            this.simpleButton2.Name = "simpleButton2";
+            this.simpleButton2.Size = new System.Drawing.Size(71, 53);
+            this.simpleButton2.TabIndex = 4;
+            this.simpleButton2.Text = "清除\r\n缓存";
+            this.simpleButton2.Click += new System.EventHandler(this.simpleButton2_Click);
             // 
             // OpForm
             // 
@@ -1305,6 +1320,28 @@
                     item.Remove();
                 }
             }
+        }
+
+        private void simpleButton2_Click(object sender, EventArgs e)
+        {
+            var cache = CYQ.Data.Cache.CacheManage.Instance;
+            var cacheTable = cache.CacheTable;
+
+            var workInfo = cache.WorkInfo;
+            string cachejson = JsonHelper.ToJson(cache.CacheInfo.Keys, false, RowOp.None);
+            var cacheTableJson = $"cacheTable: {cacheTable.ToJson(true, true, RowOp.None, false, EscapeOp.Default)}";
+            cache.Clear();
+
+            MessageBox.Show(this,@$"
+----------------------------------------------------------------
+缓存清除成功。
+----------------------------------------------------------------
+workInfo: {workInfo}
+----------------------------------------------------------------
+cachejson: {cachejson}
+----------------------------------------------------------------
+{cacheTable}
+","标题", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
         }
     }
 }
