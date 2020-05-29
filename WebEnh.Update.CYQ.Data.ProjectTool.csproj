@@ -64,8 +64,7 @@
     <ErrorReport>prompt</ErrorReport>
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
     <Prefer32Bit>false</Prefer32Bit>
-    <DocumentationFile>
-    </DocumentationFile>
+    <DocumentationFile>bin\Debug\WebEnh.Update.CYQ.Data.ProjectTool.xml</DocumentationFile>
     <LangVersion>default</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
     <GenerateSerializationAssemblies>On</GenerateSerializationAssemblies>
@@ -133,52 +132,52 @@
     <Compile Include="CYQ\Data\ProjectTool\ProjectConfig.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Libs\DevExpress.BonusSkins.v19.1.dll" />
-    <Content Include="Libs\DevExpress.Data.v19.1.dll" />
-    <Content Include="Libs\DevExpress.Data.v19.1.xml" />
-    <Content Include="Libs\DevExpress.Pdf.v19.1.Core.dll" />
-    <Content Include="Libs\DevExpress.Pdf.v19.1.Core.xml" />
-    <Content Include="Libs\DevExpress.Printing.v19.1.Core.dll" />
-    <Content Include="Libs\DevExpress.Printing.v19.1.Core.xml" />
-    <Content Include="Libs\DevExpress.Sparkline.v19.1.Core.dll" />
-    <Content Include="Libs\DevExpress.Sparkline.v19.1.Core.xml" />
-    <Content Include="Libs\DevExpress.Utils.v19.1.dll" />
-    <Content Include="Libs\DevExpress.Utils.v19.1.xml" />
-    <Content Include="Libs\DevExpress.XtraBars.v19.1.dll" />
-    <Content Include="Libs\DevExpress.XtraBars.v19.1.xml" />
-    <Content Include="Libs\DevExpress.XtraEditors.v19.1.dll" />
-    <Content Include="Libs\DevExpress.XtraEditors.v19.1.xml" />
-    <Content Include="Libs\de\DevExpress.Data.v19.1.resources.dll" />
-    <Content Include="Libs\de\DevExpress.Pdf.v19.1.Core.resources.dll" />
-    <Content Include="Libs\de\DevExpress.Printing.v19.1.Core.resources.dll" />
-    <Content Include="Libs\de\DevExpress.Sparkline.v19.1.Core.resources.dll" />
-    <Content Include="Libs\de\DevExpress.Utils.v19.1.resources.dll" />
-    <Content Include="Libs\de\DevExpress.XtraBars.v19.1.resources.dll" />
-    <Content Include="Libs\de\DevExpress.XtraEditors.v19.1.resources.dll" />
-    <Content Include="Libs\es\DevExpress.Data.v19.1.resources.dll" />
-    <Content Include="Libs\es\DevExpress.Pdf.v19.1.Core.resources.dll" />
-    <Content Include="Libs\es\DevExpress.Printing.v19.1.Core.resources.dll" />
-    <Content Include="Libs\es\DevExpress.Sparkline.v19.1.Core.resources.dll" />
-    <Content Include="Libs\es\DevExpress.Utils.v19.1.resources.dll" />
-    <Content Include="Libs\es\DevExpress.XtraBars.v19.1.resources.dll" />
-    <Content Include="Libs\es\DevExpress.XtraEditors.v19.1.resources.dll" />
-    <Content Include="Libs\ja\DevExpress.Data.v19.1.resources.dll" />
-    <Content Include="Libs\ja\DevExpress.Pdf.v19.1.Core.resources.dll" />
-    <Content Include="Libs\ja\DevExpress.Printing.v19.1.Core.resources.dll" />
-    <Content Include="Libs\ja\DevExpress.Sparkline.v19.1.Core.resources.dll" />
-    <Content Include="Libs\ja\DevExpress.Utils.v19.1.resources.dll" />
-    <Content Include="Libs\ja\DevExpress.XtraBars.v19.1.resources.dll" />
-    <Content Include="Libs\ja\DevExpress.XtraEditors.v19.1.resources.dll" />
-    <Content Include="Libs\ru\DevExpress.Data.v19.1.resources.dll" />
-    <Content Include="Libs\ru\DevExpress.Pdf.v19.1.Core.resources.dll" />
-    <Content Include="Libs\ru\DevExpress.Printing.v19.1.Core.resources.dll" />
-    <Content Include="Libs\ru\DevExpress.Sparkline.v19.1.Core.resources.dll" />
-    <Content Include="Libs\ru\DevExpress.Utils.v19.1.resources.dll" />
-    <Content Include="Libs\ru\DevExpress.XtraBars.v19.1.resources.dll" />
-    <Content Include="Libs\ru\DevExpress.XtraEditors.v19.1.resources.dll" />
     <Content Include="project_128px_1087702_easyicon.net.ico" />
     <None Include="Libs\CYQ.Data.dll" />
+    <None Include="Libs\DevExpress.BonusSkins.v19.1.dll" />
+    <None Include="Libs\DevExpress.Data.v19.1.dll" />
+    <None Include="Libs\DevExpress.Data.v19.1.xml" />
+    <None Include="Libs\DevExpress.Pdf.v19.1.Core.dll" />
+    <None Include="Libs\DevExpress.Pdf.v19.1.Core.xml" />
+    <None Include="Libs\DevExpress.Printing.v19.1.Core.dll" />
+    <None Include="Libs\DevExpress.Printing.v19.1.Core.xml" />
+    <None Include="Libs\DevExpress.Sparkline.v19.1.Core.dll" />
+    <None Include="Libs\DevExpress.Sparkline.v19.1.Core.xml" />
+    <None Include="Libs\DevExpress.Utils.v19.1.dll" />
+    <None Include="Libs\DevExpress.Utils.v19.1.xml" />
+    <None Include="Libs\DevExpress.XtraBars.v19.1.dll" />
+    <None Include="Libs\DevExpress.XtraBars.v19.1.xml" />
+    <None Include="Libs\DevExpress.XtraEditors.v19.1.dll" />
+    <None Include="Libs\DevExpress.XtraEditors.v19.1.xml" />
+    <None Include="Libs\de\DevExpress.Data.v19.1.resources.dll" />
+    <None Include="Libs\de\DevExpress.Pdf.v19.1.Core.resources.dll" />
+    <None Include="Libs\de\DevExpress.Printing.v19.1.Core.resources.dll" />
+    <None Include="Libs\de\DevExpress.Sparkline.v19.1.Core.resources.dll" />
+    <None Include="Libs\de\DevExpress.Utils.v19.1.resources.dll" />
+    <None Include="Libs\de\DevExpress.XtraBars.v19.1.resources.dll" />
+    <None Include="Libs\de\DevExpress.XtraEditors.v19.1.resources.dll" />
+    <None Include="Libs\es\DevExpress.Data.v19.1.resources.dll" />
+    <None Include="Libs\es\DevExpress.Pdf.v19.1.Core.resources.dll" />
+    <None Include="Libs\es\DevExpress.Printing.v19.1.Core.resources.dll" />
+    <None Include="Libs\es\DevExpress.Sparkline.v19.1.Core.resources.dll" />
+    <None Include="Libs\es\DevExpress.Utils.v19.1.resources.dll" />
+    <None Include="Libs\es\DevExpress.XtraBars.v19.1.resources.dll" />
+    <None Include="Libs\es\DevExpress.XtraEditors.v19.1.resources.dll" />
+    <None Include="Libs\ja\DevExpress.Data.v19.1.resources.dll" />
+    <None Include="Libs\ja\DevExpress.Pdf.v19.1.Core.resources.dll" />
+    <None Include="Libs\ja\DevExpress.Printing.v19.1.Core.resources.dll" />
+    <None Include="Libs\ja\DevExpress.Sparkline.v19.1.Core.resources.dll" />
+    <None Include="Libs\ja\DevExpress.Utils.v19.1.resources.dll" />
+    <None Include="Libs\ja\DevExpress.XtraBars.v19.1.resources.dll" />
+    <None Include="Libs\ja\DevExpress.XtraEditors.v19.1.resources.dll" />
     <None Include="Libs\MySql.Data.dll" />
+    <None Include="Libs\ru\DevExpress.Data.v19.1.resources.dll" />
+    <None Include="Libs\ru\DevExpress.Pdf.v19.1.Core.resources.dll" />
+    <None Include="Libs\ru\DevExpress.Printing.v19.1.Core.resources.dll" />
+    <None Include="Libs\ru\DevExpress.Sparkline.v19.1.Core.resources.dll" />
+    <None Include="Libs\ru\DevExpress.Utils.v19.1.resources.dll" />
+    <None Include="Libs\ru\DevExpress.XtraBars.v19.1.resources.dll" />
+    <None Include="Libs\ru\DevExpress.XtraEditors.v19.1.resources.dll" />
     <None Include="Properties\app.manifest" />
     <None Include="ReadMe.MD">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
